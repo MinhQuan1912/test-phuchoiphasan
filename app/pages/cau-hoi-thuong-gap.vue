@@ -1,23 +1,27 @@
 <template>
-   <div class="bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 min-h-screen">
-      <section class="border-b border-gray-200 dark:border-gray-800 bg-gray-100/70 dark:bg-gray-900/40">
-         <div class="container mx-auto px-6 py-14 text-center">
-            <p class="uppercase tracking-[0.14em] text-xs font-bold text-primary">Hỗ trợ &amp; giải đáp</p>
-            <h1 class="mt-3 mb-3 text-4xl font-extrabold tracking-tight">Câu hỏi thường gặp</h1>
-            <p class="text-gray-500 dark:text-gray-400 leading-relaxed max-w-lg mx-auto mb-7">
+   <div class="bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100">
+      <section class="relative overflow-hidden border-b border-gray-200 dark:border-gray-800">
+         <div class="absolute inset-0 hero-img">
+            <img src="https://picsum.photos/300/200" alt="" class="w-full h-full object-cover object-center" />
+         </div>
+         <div class="absolute inset-0 hero-overlay"></div>
+         <div class="relative container mx-auto px-9 py-14 max-w-3xl text-center">
+            <p class="uppercase tracking-[0.14em] text-xs font-bold text-white/85">Hỗ trợ &amp; giải đáp</p>
+            <h1 class="mt-3 mb-3 text-4xl font-extrabold tracking-tight text-white">Câu hỏi thường gặp</h1>
+            <p class="text-white/82 leading-relaxed max-w-lg mx-auto mb-7">
                Giải đáp các thắc mắc phổ biến về thủ tục phá sản, quản tài viên, quyền của chủ nợ và người lao động.
             </p>
 
             <div class="relative max-w-lg mx-auto">
                <UIcon name="material-symbols:search"
                   class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-               <input v-model="searchQuery" type="text" placeholder="Nhập từ khóa câu hỏi..." class="w-full h-13 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900
-                     pl-12 pr-4 text-[15px] outline-none focus:border-primary transition-colors" />
+               <input v-model="searchQuery" type="text" placeholder="Nhập từ khóa câu hỏi..." class="w-full h-13 rounded-xl border border-white/25 bg-white
+                     pl-12 pr-4 text-[15px] text-gray-900 outline-none shadow-2xl" />
             </div>
          </div>
       </section>
 
-      <section class="container mx-auto px-6 pt-10 pb-2">
+      <section class="container mx-auto px-9 pt-10 pb-2 max-w-5xl">
          <div class="flex flex-wrap gap-2.5 justify-center mb-7">
             <button v-for="cat in categories" :key="cat" type="button"
                class="h-9 px-4 inline-flex items-center rounded-full text-[13px] font-semibold border transition-all"
@@ -29,10 +33,11 @@
             </button>
          </div>
 
-         <div v-if="filteredFaqs.length">
-            <UAccordion :items="accordionItems" type="multiple" class="space-y-3">
+         <div v-if="filteredFaqs.length" class="space-y-3">
+            <UAccordion :items="accordionItems" type="multiple" class="space-y-3 text-lg" :ui="{ label: 'text-xl' }">
+
                <template #body="{ item }">
-                  <div class="text-[14.5px] leading-relaxed text-gray-500 dark:text-gray-400">
+                  <div class="text-lg leading-relaxed text-gray-500 dark:text-gray-400">
                      {{ item.answer }}
                   </div>
                </template>
@@ -40,16 +45,12 @@
          </div>
 
          <div v-else class="text-center py-12 text-gray-500 dark:text-gray-400">
-            <p class="text-lg font-bold text-gray-900 dark:text-gray-100 mb-1.5">
-               Không tìm thấy câu hỏi phù hợp
-            </p>
-            <p class="text-sm">
-               Thử từ khóa khác hoặc chọn chủ đề "Tất cả".
-            </p>
+            <p class="text-lg font-bold text-gray-900 dark:text-gray-100 mb-1.5">Không tìm thấy câu hỏi phù hợp</p>
+            <p class="text-sm">Thử từ khóa khác hoặc chọn chủ đề "Tất cả".</p>
          </div>
       </section>
 
-      <section class="container mx-auto px-6 pt-6 pb-14">
+      <section class="container mx-auto px-9 pt-6 pb-14 max-w-5xl">
          <div class="bg-primary text-white rounded-2xl px-9 py-8 flex flex-wrap items-center justify-between gap-6">
             <div>
                <h3 class="text-xl font-extrabold mb-1.5">Chưa tìm thấy câu trả lời?</h3>
@@ -107,7 +108,7 @@ const faqs: Faq[] = [
 
 const searchQuery = ref('')
 const activeCategory = ref('Tất cả')
-
+const openIds = ref<number[]>([])
 
 const filteredFaqs = computed(() => {
    const q = searchQuery.value.trim().toLowerCase()
@@ -125,12 +126,33 @@ const accordionItems = computed(() =>
    }))
 )
 
+function isOpen(id: number) {
+   return openIds.value.includes(id)
+}
 
 </script>
 
 <style scoped>
+.hero-overlay {
+   background: linear-gradient(90deg,
+         rgba(8, 16, 30, 0.9) 0%,
+         rgba(8, 16, 30, 0.75) 35%,
+         rgba(8, 16, 30, 0.3) 65%,
+         transparent 100%);
+}
+
 .h-13 {
    height: 3.25rem;
 }
 
+.faq-enter-active,
+.faq-leave-active {
+   transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.faq-enter-from,
+.faq-leave-to {
+   opacity: 0;
+   transform: translateY(-4px);
+}
 </style>

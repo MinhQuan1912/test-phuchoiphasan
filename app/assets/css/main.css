@@ -3,6 +3,10 @@
 @import "../theme/breakpoint.css";
 @import "../theme/color.css";
 
+body {
+  font-family: "Be Vietnam Pro", sans-serif;
+}
+
 button {
    transition: all 0.3s ease-in-out;
    cursor: pointer;
@@ -18,3 +22,4 @@ nav a:focus-visible {
   outline: none;
   box-shadow: none;
 }
+
