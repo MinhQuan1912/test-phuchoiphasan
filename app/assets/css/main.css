@@ -1,0 +1,20 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+@import "../theme/breakpoint.css";
+@import "../theme/color.css";
+
+button {
+   transition: all 0.3s ease-in-out;
+   cursor: pointer;
+}
+
+a {
+   transition: all 0.1s ease;
+   cursor: pointer;
+}
+
+nav a:focus,
+nav a:focus-visible {
+  outline: none;
+  box-shadow: none;
+}

@@ -1,0 +1,59 @@
+<template>
+   <div class="bg-gray-100 dark:bg-transparent ">
+      <div class="container mx-auto px-6">
+         <div class="pt-5 lg:pt-20 pb-5 lg:pb-15 gap-4 lg:gap-0 flex flex-wrap lg:flex-nowrap justify-between">
+            <div class="flex flex-col gap-4 w-[calc(50%-8px)] lg:w-100">
+               <iframe
+               class="w-120 h-full rounded-xl"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.728202024494!2d105.81463617804927!3d21.003529538748154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ac848e7a6067%3A0x8b03cbf87b7af8ab!2zVG_DoCBuaMOgIFbDom4gTmFt!5e0!3m2!1svi!2s!4v1783931240823!5m2!1svi!2s"
+                  loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+            <div class="flex gap-12">
+               <div class="flex flex-col gap-6 w-[calc(50%-8px)] lg:w-auto">
+                  <p class="text-xl leading-7 font-medium">Hỗ trợ</p>
+                  <div class="flex flex-col justify-between gap-4">
+                     <p class="leading-6"> Đường Nghiêm Xuân Yêm, P.<br /> Đại Kim, Q. Hoàng Mai, TP. Hà Nội</p>
+                     <a href="mailto:exclusive@gmail.com"
+                        class="leading-6 hover:text-secondary-02 ease">techzone@gmail.com</a>
+                     <a href="tel:+88015-88888-9999"
+                        class="leading-6 hover:text-secondary-02 ease">+88015-88888-9999</a>
+                  </div>
+               </div>
+               <div class="flex flex-col gap-6 w-[calc(50%-8px)] lg:w-auto">
+                  <p class="text-xl leading-7 font-medium">Danh mục</p>
+                  <div class="flex flex-col justify-between gap-4">
+                     <template v-for="item in categories">
+                        <NuxtLink :to="item.to" class="leading-6 hover:text-secondary-02">{{ item.label }}</NuxtLink>
+                     </template>
+                  </div>
+               </div>
+               <div class="flex flex-col gap-6 w-[calc(50%-8px)] lg:w-auto">
+                  <p class="text-xl leading-7 font-medium">Dịch vụ</p>
+                  <div class="flex flex-col justify-between gap-4">
+                     <template v-for="item in service">
+                        <NuxtLink :to="item.to" class="leading-6 hover:text-secondary-02">{{ item.label }}</NuxtLink>
+                     </template>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</template>
+<script lang="ts" setup>
+
+const categories = ref([
+   { label: 'Trang chủ', to: '/' },
+   { label: 'Thông báo phá sản', to: '/thong-bao-pha-san' },
+   { label: 'Tin tức', to: '/tin-tuc' },
+   { label: 'Câu hỏi thường gặp', to: '/cau-hoi-thuong-gap' },
+   { label: 'Về chúng tôi', to: '/ve-chung-toi' },
+])
+const service = ref([
+   { label: 'Phá sản', to: '/dich-vu/pha-san' },
+   { label: 'Phục hồi', to: '/dich-vu/phuc-hoi' },
+   { label: 'Tư vấn', to: '/dich-vu/tu-van' },
+   { label: 'Quản lý tài sản', to: '/dich-vu/quan-ly-tai-san' },
+])
+
+</script>
