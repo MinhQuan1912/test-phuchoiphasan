@@ -59,7 +59,7 @@
                </p>
             </div>
             <div class="flex flex-wrap gap-3">
-               <NuxtLink to="/lien-he"
+               <NuxtLink to="/"
                   class="h-11 inline-flex items-center px-5 rounded-lg bg-white text-primary font-bold">
                   Liên hệ tư vấn
                </NuxtLink>

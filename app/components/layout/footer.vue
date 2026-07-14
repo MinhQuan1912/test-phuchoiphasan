@@ -3,27 +3,33 @@
       <div class="container mx-auto px-6">
          <div class="pt-5 lg:pt-20 pb-5 lg:pb-15 gap-4 lg:gap-0 flex flex-wrap lg:flex-nowrap justify-between">
             <div class="flex flex-col gap-4 w-[calc(50%-8px)] lg:w-100">
-               <iframe
-               class="w-120 h-full rounded-xl"
+               <iframe class="w-120 h-full rounded-xl"
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.728202024494!2d105.81463617804927!3d21.003529538748154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ac848e7a6067%3A0x8b03cbf87b7af8ab!2zVG_DoCBuaMOgIFbDom4gTmFt!5e0!3m2!1svi!2s!4v1783931240823!5m2!1svi!2s"
                   loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
-            <div class="flex gap-12">
+            <div class="flex gap-14">
                <div class="flex flex-col gap-6 w-[calc(50%-8px)] lg:w-auto">
-                  <p class="text-xl leading-7 font-medium">Hỗ trợ</p>
+                  <p class="text-xl leading-7 font-medium">Liên hệ</p>
                   <div class="flex flex-col justify-between gap-4">
-                     <p class="leading-6"> Đường Nghiêm Xuân Yêm, P.<br /> Đại Kim, Q. Hoàng Mai, TP. Hà Nội</p>
-                     <a href="mailto:exclusive@gmail.com"
-                        class="leading-6 hover:text-secondary-02 ease">techzone@gmail.com</a>
-                     <a href="tel:+88015-88888-9999"
-                        class="leading-6 hover:text-secondary-02 ease">+88015-88888-9999</a>
+                     <div class="flex items-center gap-2">
+                        <UIcon name="mdi:address-marker-outline" class="w-6 h-6" />
+                        <p class="leading-6"> Đường Nghiêm Xuân Yêm, P.<br /> Đại Kim, Q. Hoàng Mai, TP. Hà Nội</p>
+                     </div>
+                     <a href="mailto:exclusive@gmail.com" class="flex items-center gap-2">
+                        <UIcon name="ic:outline-email" class="w-6 h-6" />
+                        <p class="leading-6 hover:text-primary ease">abcdef@gmail.com</p>
+                     </a>
+                     <a href="tel:+88015-88888-9999" class="flex items-center gap-2">
+                        <UIcon name="boxicons:phone" class="h-6 w-6" />
+                        <p class="leading-6 hover:text-primary ease">+88015-88888-9999</p>
+                     </a>
                   </div>
                </div>
                <div class="flex flex-col gap-6 w-[calc(50%-8px)] lg:w-auto">
                   <p class="text-xl leading-7 font-medium">Danh mục</p>
                   <div class="flex flex-col justify-between gap-4">
                      <template v-for="item in categories">
-                        <NuxtLink :to="item.to" class="leading-6 hover:text-secondary-02">{{ item.label }}</NuxtLink>
+                        <NuxtLink :to="item.to" class="leading-6 hover:text-primary">{{ item.label }}</NuxtLink>
                      </template>
                   </div>
                </div>
@@ -31,7 +37,7 @@
                   <p class="text-xl leading-7 font-medium">Dịch vụ</p>
                   <div class="flex flex-col justify-between gap-4">
                      <template v-for="item in service">
-                        <NuxtLink :to="item.to" class="leading-6 hover:text-secondary-02">{{ item.label }}</NuxtLink>
+                        <NuxtLink :to="item.to" class="leading-6 hover:text-primary">{{ item.label }}</NuxtLink>
                      </template>
                   </div>
                </div>

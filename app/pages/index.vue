@@ -21,7 +21,7 @@
                      class="h-12 inline-flex items-center px-6 rounded-lg bg-white text-primary font-bold">
                      Tra cứu thông báo
                   </NuxtLink>
-                  <NuxtLink to="/dich-vu"
+                  <NuxtLink to="/"
                      class="h-12 inline-flex items-center px-6 rounded-lg border-[1.5px] border-white/55 text-white font-semibold">
                      Xem dịch vụ
                   </NuxtLink>
@@ -170,7 +170,7 @@
                <p class="text-white/85 leading-relaxed">Liên hệ để được đội ngũ chuyên gia tư vấn miễn phí.</p>
             </div>
             <div class="flex flex-wrap gap-3">
-               <NuxtLink to="/lien-he"
+               <NuxtLink to="/"
                   class="h-11 inline-flex items-center px-5 rounded-lg bg-white text-primary font-bold">Liên hệ tư vấn
                </NuxtLink>
                <a href="tel:19006789"
@@ -217,7 +217,7 @@ const latest = [
 const services = [
    { n: '01', title: 'Phá sản', desc: 'Hỗ trợ nộp đơn, mở thủ tục và đại diện trong suốt quá trình giải quyết phá sản.', link: '/dich-vu/pha-san' },
    { n: '02', title: 'Phục hồi', desc: 'Xây dựng và triển khai phương án phục hồi hoạt động kinh doanh khả thi.', link: '/dich-vu/phuc-hoi' },
-   { n: '03', title: 'Tư vấn pháp lý', desc: 'Tư vấn quyền, nghĩa vụ của chủ nợ, con nợ và các bên liên quan trong vụ việc.', link: '/dich-vu/tu-van-phap-ly' },
+   { n: '03', title: 'Tư vấn pháp lý', desc: 'Tư vấn quyền, nghĩa vụ của chủ nợ, con nợ và các bên liên quan trong vụ việc.', link: '/dich-vu/tu-van' },
    { n: '04', title: 'Quản lý tài sản', desc: 'Kiểm kê, định giá, bảo quản và thanh lý tài sản minh bạch, đúng quy định.', link: '/dich-vu/quan-ly-tai-san' }
 ]
 
