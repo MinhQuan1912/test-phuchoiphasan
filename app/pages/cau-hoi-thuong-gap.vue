@@ -1,13 +1,13 @@
 <template>
    <div class="bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100">
       <section class="relative overflow-hidden border-b border-gray-200 dark:border-gray-800">
-         <div class="absolute inset-0 hero-img">
+         <div class="absolute inset-0">
             <img src="https://picsum.photos/300/200" alt="" class="w-full h-full object-cover object-center" />
          </div>
          <div class="absolute inset-0 hero-overlay"></div>
          <div class="relative container mx-auto px-9 py-14 max-w-3xl text-center">
             <p class="uppercase tracking-[0.14em] text-xs font-bold text-white/85">Hỗ trợ &amp; giải đáp</p>
-            <h1 class="mt-3 mb-3 text-4xl font-extrabold tracking-tight text-white">Câu hỏi thường gặp</h1>
+            <h1 class="mt-3 mb-3 text-[42px] font-extrabold tracking-tight text-white">Câu hỏi thường gặp</h1>
             <p class="text-white/82 leading-relaxed max-w-lg mx-auto mb-7">
                Giải đáp các thắc mắc phổ biến về thủ tục phá sản, quản tài viên, quyền của chủ nợ và người lao động.
             </p>

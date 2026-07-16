@@ -3,7 +3,7 @@
       <div class="fixed top-0 left-0 h-[3px] bg-primary z-20 transition-[width] duration-100"
          :style="{ width: progress + '%' }"></div>
 
-      <article class="container mx-auto px-6 pt-11 pb-2">
+      <article class="container max-w-3xl mx-auto px-6 pt-11 pb-2">
          <nav class="text-sm text-gray-500 dark:text-gray-400 mb-5">
             <NuxtLink to="/" class="hover:text-primary transition-colors">Trang chủ</NuxtLink>
             <span class="opacity-60 mx-1">/</span>
@@ -85,7 +85,7 @@
 
       </article>
 
-      <section class="container mx-auto px-6 pt-12 pb-2">
+      <section class="container max-w-3xl mx-auto px-6 pt-12 pb-2">
          <div class="flex items-center gap-2.5 mb-6">
             <span class="w-1 h-6 bg-primary rounded-sm"></span>
             <h2 class="text-xl font-extrabold tracking-tight">Bài viết liên quan</h2>
