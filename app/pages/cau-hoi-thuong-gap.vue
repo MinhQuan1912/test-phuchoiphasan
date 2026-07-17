@@ -5,9 +5,9 @@
             <img src="https://picsum.photos/300/200" alt="" class="w-full h-full object-cover object-center" />
          </div>
          <div class="absolute inset-0 hero-overlay"></div>
-         <div class="relative container mx-auto px-9 py-14 max-w-3xl text-center">
+         <div class="relative container mx-auto px-4 sm:px-6 lg:px-9 py-14 max-w-3xl text-center">
             <p class="uppercase tracking-[0.14em] text-xs font-bold text-white/85">Hỗ trợ &amp; giải đáp</p>
-            <h1 class="mt-3 mb-3 text-[42px] font-extrabold tracking-tight text-white">Câu hỏi thường gặp</h1>
+            <h1 class="mt-3 mb-3 text-3xl sm:text-4xl lg:text-[42px] font-extrabold tracking-tight text-white">Câu hỏi thường gặp</h1>
             <p class="text-white/82 leading-relaxed max-w-lg mx-auto mb-7">
                Giải đáp các thắc mắc phổ biến về thủ tục phá sản, quản tài viên, quyền của chủ nợ và người lao động.
             </p>
@@ -21,7 +21,7 @@
          </div>
       </section>
 
-      <section class="container mx-auto px-9 pt-10 pb-2 max-w-5xl">
+      <section class="container mx-auto px-4 sm:px-6 lg:px-9 pt-10 pb-2 max-w-5xl">
          <div class="flex flex-wrap gap-2.5 justify-center mb-7">
             <button v-for="cat in categories" :key="cat" type="button"
                class="h-9 px-4 inline-flex items-center rounded-full text-[13px] font-semibold border transition-all"
@@ -50,8 +50,8 @@
          </div>
       </section>
 
-      <section class="container mx-auto px-9 pt-6 pb-14 max-w-5xl">
-         <div class="bg-primary text-white rounded-2xl px-9 py-8 flex flex-wrap items-center justify-between gap-6">
+      <section class="container mx-auto px-4 sm:px-6 lg:px-9 pt-6 pb-14 max-w-5xl">
+         <div class="bg-primary text-white rounded-2xl px-4 sm:px-6 lg:px-9 py-8 flex flex-wrap items-center justify-between gap-6">
             <div>
                <h3 class="text-xl font-extrabold mb-1.5">Chưa tìm thấy câu trả lời?</h3>
                <p class="text-white/85 leading-relaxed">

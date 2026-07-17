@@ -7,7 +7,7 @@
          <div class="absolute inset-0 hero-overlay"></div>
          <div class="relative container mx-auto px-6 py-14 max-w-3xl text-center">
             <p class="uppercase tracking-[0.14em] text-xs font-bold text-white/85">Về chúng tôi</p>
-            <h1 class="mt-3 mb-3.5 text-[42px]/tight font-extrabold tracking-tight text-white">
+            <h1 class="mt-3 mb-3.5 text-3xl sm:text-4xl lg:text-[42px]/tight font-extrabold tracking-tight text-white">
                Chuyên gia đồng hành cùng doanh nghiệp trong giai đoạn khó khăn
             </h1>
             <p class="text-white/82 text-[17px] leading-relaxed max-w-2xl mx-auto">
@@ -17,7 +17,7 @@
          </div>
       </section>
 
-      <section class="container mx-auto px-9 py-14">
+      <section class="container mx-auto px-4 sm:px-6 lg:px-9 py-14">
          <div class="grid md:grid-cols-2 gap-12 items-center">
             <div
                class="aspect-4/3 rounded-2xl flex items-center justify-center ">
@@ -43,7 +43,7 @@
       </section>
 
       <section class="bg-white dark:bg-gray-900 border-y border-gray-200 dark:border-gray-800">
-         <div class="container mx-auto px-9 py-9 max-w-5xl grid grid-cols-2 md:grid-cols-4">
+         <div class="container mx-auto px-4 sm:px-6 lg:px-9 py-9 max-w-5xl grid grid-cols-2 md:grid-cols-4">
             <div v-for="(s, i) in stats" :key="s.label" class="text-center px-4"
                :class="i > 0 ? 'md:border-l border-gray-200 dark:border-gray-800' : ''">
                <div class="text-4xl font-extrabold text-primary tracking-tight leading-none">{{ s.value }}</div>
@@ -52,7 +52,7 @@
          </div>
       </section>
 
-      <section class="container mx-auto px-9 py-14 ">
+      <section class="container mx-auto px-4 sm:px-6 lg:px-9 py-14 ">
          <div class="text-center mb-8">
             <p class="uppercase tracking-[0.14em] text-xs font-bold text-primary">Giá trị cốt lõi</p>
             <h2 class="mt-3 text-3xl font-extrabold tracking-tight">Nguyên tắc chúng tôi theo đuổi</h2>
@@ -70,7 +70,7 @@
       </section>
 
       <section class="bg-gray-100 dark:bg-gray-900/40 border-t border-gray-200 dark:border-gray-800">
-         <div class="container mx-auto px-9 py-14">
+         <div class="container mx-auto px-4 sm:px-6 lg:px-9 py-14">
             <div class="text-center mb-8">
                <p class="uppercase tracking-[0.14em] text-xs font-bold text-primary">Đội ngũ</p>
                <h2 class="mt-3 text-3xl font-extrabold tracking-tight">Chuyên gia của chúng tôi</h2>
@@ -89,7 +89,7 @@
          </div>
       </section>
 
-      <section class="container mx-auto px-9 py-14 ">
+      <section class="container mx-auto px-4 sm:px-6 lg:px-9 py-14 ">
          <div class="flex items-center gap-2.5 mb-7">
             <span class="w-1 h-6 bg-primary rounded-sm"></span>
             <h2 class="text-2xl font-extrabold tracking-tight">Quy trình làm việc</h2>
@@ -104,8 +104,8 @@
          </div>
       </section>
 
-      <section class="container mx-auto px-9 pb-14">
-         <div class="bg-primary text-white rounded-2xl px-9 py-9 flex flex-wrap items-center justify-between gap-6">
+      <section class="container mx-auto px-4 sm:px-6 lg:px-9 pb-14">
+         <div class="bg-primary text-white rounded-2xl px-4 sm:px-6 lg:px-9 py-9 flex flex-wrap items-center justify-between gap-6">
             <div>
                <h3 class="text-2xl font-extrabold mb-1.5">Cần hỗ trợ về thủ tục phá sản?</h3>
                <p class="text-white/85 leading-relaxed">Liên hệ để được đội ngũ chuyên gia của chúng tôi tư vấn miễn
@@ -156,13 +156,9 @@ const process = [
    { n: '03', title: 'Hội nghị & phương án', desc: 'Tổ chức hội nghị chủ nợ, xây dựng và biểu quyết phương án phục hồi.' },
    { n: '04', title: 'Phục hồi hoặc thanh lý', desc: 'Triển khai phục hồi hoặc thanh lý, phân chia tài sản theo thứ tự ưu tiên.' }
 ]
-
-
 </script>
 
 <style scoped>
-
-
 .hero-overlay {
    background: linear-gradient(90deg,
          rgba(8, 16, 30, 0.9) 0%,
@@ -170,7 +166,6 @@ const process = [
          rgba(8, 16, 30, 0.3) 65%,
          transparent 100%);
 }
-
 
 .ph-round {
    background: repeating-linear-gradient(135deg, rgba(15, 86, 179, 0.1) 0 8px, transparent 8px 16px), rgb(231 240 252);

@@ -5,11 +5,11 @@
             <img src="https://picsum.photos/300/200" alt="" class="w-full h-full object-cover object-center" />
          </div>
          <div class="absolute inset-0 hero-overlay"></div>
-         <div class="relative container mx-auto px-9 pt-[70px] pb-[60px]">
+         <div class="relative container mx-auto px-4 sm:px-6 lg:px-9 pt-12 pb-10 sm:pt-[70px] sm:pb-[60px]">
             <div class="max-w-[720px]">
                <p class="uppercase tracking-[0.16em] text-xs font-bold text-white/80">Cổng thông tin phá sản &amp; phục
                   hồi doanh nghiệp</p>
-               <h1 class="my-4 text-[46px]/tight font-extrabold tracking-tight text-white">
+               <h1 class="my-4 text-3xl sm:text-4xl lg:text-[46px]/tight font-extrabold tracking-tight text-white">
                   Thông tin phá sản minh bạch, cập nhật theo từng quyết định của tòa án
                </h1>
                <p class="mb-7 text-lg leading-relaxed text-white/85 max-w-xl">
@@ -30,7 +30,7 @@
          </div>
       </section>
 
-      <section class="container mx-auto px-9 pt-11 pb-3 grid lg:grid-cols-[1fr_380px] gap-11 items-start">
+      <section class="container mx-auto px-4 sm:px-6 lg:px-9 pt-11 pb-3 grid lg:grid-cols-[1fr_380px] gap-11 items-start">
          <div>
             <div class="flex items-center gap-2.5 mb-5">
                <span class="w-1 h-5.5 bg-primary rounded-sm"></span>
@@ -53,7 +53,7 @@
 
             <NuxtLink v-for="post in secondary" :key="post.slug" :to="`/tin-tuc/${post.slug}`"
                class="flex gap-4.5 mb-5.5 last:mb-0">
-               <div class="w-45 shrink-0 aspect-16/10 rounded-xl flex items-center justify-center">
+               <div class="w-28 sm:w-45 shrink-0 aspect-16/10 rounded-xl flex items-center justify-center">
                   <img src="https://picsum.photos/300/200" alt="" class="w-full h-full object-cover" />
                </div>
                <div>
@@ -86,7 +86,7 @@
       </section>
 
       <section class="bg-gray-100 dark:bg-gray-900/40 border-t border-gray-200 dark:border-gray-800 mt-8">
-         <div class="container mx-auto px-9 py-12">
+         <div class="container mx-auto px-4 sm:px-6 lg:px-9 py-12">
             <div class="text-center mb-8">
                <p class="uppercase tracking-[0.14em] text-xs font-bold text-primary">Chúng tôi làm gì</p>
                <h2 class="mt-3 text-3xl font-extrabold tracking-tight">Dịch vụ của chúng tôi</h2>
@@ -117,7 +117,7 @@
       </section>
 
       <section class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
-         <div class="container mx-auto px-9 py-12">
+         <div class="container mx-auto px-4 sm:px-6 lg:px-9 py-12">
             <div class="flex flex-wrap items-end justify-between gap-4 mb-4.5">
                <div class="flex items-center gap-2.5">
                   <span class="w-1 h-6 bg-primary rounded-sm"></span>
@@ -137,9 +137,9 @@
                </button>
             </div>
 
-            <div class="border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden">
+            <div class="hidden md:block border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden">
                <div
-                  class="hidden md:grid grid-cols-[210px_1fr_160px_170px_100px] gap-4 items-center px-[18px] py-3.5 bg-gray-100 dark:bg-gray-800/40 uppercase tracking-wide text-[11px] font-bold text-gray-500 dark:text-gray-400">
+                  class="grid grid-cols-[210px_1fr_160px_170px_100px] gap-4 items-center px-[18px] py-3.5 bg-gray-100 dark:bg-gray-800/40 uppercase tracking-wide text-[11px] font-bold text-gray-500 dark:text-gray-400">
                   <div>Tòa án</div>
                   <div>Nội dung thông báo</div>
                   <div>Loại</div>
@@ -147,7 +147,7 @@
                   <div>Ngày</div>
                </div>
                <div v-for="(a, i) in announcementsPreview" :key="a.no"
-                  class="grid md:grid-cols-[210px_1fr_160px_170px_100px] gap-1.5 md:gap-4 md:items-center px-[18px] py-[15px] hover:bg-gray-50 dark:hover:bg-gray-800/40 transition-colors"
+                  class="grid grid-cols-[210px_1fr_160px_170px_100px] gap-4 items-center px-[18px] py-[15px] hover:bg-gray-50 dark:hover:bg-gray-800/40 transition-colors"
                   :class="i > 0 ? 'border-t border-gray-200 dark:border-gray-800' : ''">
                   <div class="text-[13px] font-semibold text-primary">{{ a.court }}</div>
                   <NuxtLink to="/thong-bao-pha-san"
@@ -160,11 +160,29 @@
                   <div class="text-[13px] text-gray-500 dark:text-gray-400">{{ a.date }}</div>
                </div>
             </div>
+
+            <div class="md:hidden flex flex-col gap-3">
+               <NuxtLink v-for="a in announcementsPreview" :key="a.no" to="/thong-bao-pha-san"
+                  class="block border border-gray-200 dark:border-gray-800 rounded-xl p-4 hover:border-primary transition-colors">
+                  <div class="flex items-center justify-between gap-3 mb-2">
+                     <span class="text-[13px] font-semibold text-primary">{{ a.court }}</span>
+                     <span
+                        class="shrink-0 inline-block bg-primary/10 text-primary text-[11px] font-semibold px-2.5 py-1 rounded-full">{{
+                           a.type }}</span>
+                  </div>
+                  <div class="text-sm font-semibold leading-snug mb-2.5">{{ a.title }}</div>
+                  <div class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+                     <span>{{ a.no }}</span>
+                     <span class="opacity-50">·</span>
+                     <span>{{ a.date }}</span>
+                  </div>
+               </NuxtLink>
+            </div>
          </div>
       </section>
 
-      <section class="container mx-auto px-9 pb-12">
-         <div class="bg-primary text-white rounded-2xl p-9 flex flex-wrap items-center justify-between gap-6">
+      <section class="container mx-auto px-4 sm:px-6 lg:px-9 pb-12">
+         <div class="bg-primary text-white rounded-2xl p-6 sm:p-9 flex flex-wrap items-center justify-between gap-6">
             <div>
                <h3 class="text-2xl font-extrabold mb-1.5">Cần hỗ trợ về thủ tục phá sản?</h3>
                <p class="text-white/85 leading-relaxed">Liên hệ để được đội ngũ chuyên gia tư vấn miễn phí.</p>

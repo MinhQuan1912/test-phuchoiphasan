@@ -5,15 +5,15 @@
                <img src="https://picsum.photos/300/200" alt="" class="w-full h-full object-cover object-center" />
          </div>
          <div class="absolute inset-0 hero-overlay"></div>
-         <div class="relative container mx-auto px-9 py-14">
-            <h1 class="text-4xl font-extrabold tracking-tight text-white mb-2.5">Tin tức</h1>
+         <div class="relative container mx-auto px-4 sm:px-6 lg:px-9 py-14">
+            <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-2.5">Tin tức</h1>
             <p class="text-[16.5px] leading-relaxed text-white/82 max-w-2xl">
                Cập nhật thời sự, quy định pháp luật và phân tích chuyên sâu về phá sản, phục hồi doanh nghiệp.
             </p>
          </div>
       </section>
 
-      <section class="container mx-auto px-9 pt-7 pb-2">
+      <section class="container mx-auto px-4 sm:px-6 lg:px-9 pt-7 pb-2">
          <div class="flex flex-wrap gap-2.5 mt-4 mb-7">
             <button v-for="cat in categories" :key="cat" type="button"
                class="h-9 px-4 inline-flex items-center rounded-full text-[13px] font-semibold border transition-all"

@@ -11,7 +11,7 @@
             <span class="opacity-60 mx-1">/</span>
             <span>{{ article.category }}</span>
          </nav>
-         <h1 class="mt-4 mb-5 text-4xl/tight font-extrabold tracking-tight">{{ article.title }}</h1>
+         <h1 class="mt-4 mb-5 text-3xl sm:text-4xl/tight font-extrabold tracking-tight">{{ article.title }}</h1>
 
          <div class="flex items-center gap-3.5 pb-6 border-b border-gray-200 dark:border-gray-800">
             <div

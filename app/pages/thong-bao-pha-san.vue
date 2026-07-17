@@ -5,8 +5,8 @@
             <img src="https://picsum.photos/300/200" alt="" class="w-full h-full object-cover object-center" />
          </div>
          <div class="absolute inset-0 hero-overlay"></div>
-         <div class="relative container mx-auto px-9 pt-14 pb-12">
-            <h1 class="text-4xl font-extrabold tracking-tight text-white mb-2.5">Thông báo phá sản</h1>
+         <div class="relative container mx-auto px-4 sm:px-6 lg:px-9 pt-14 pb-12">
+            <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-2.5">Thông báo phá sản</h1>
             <p class="text-[16.5px] leading-relaxed text-white/82 max-w-2xl">
                Tra cứu các quyết định mở thủ tục, triệu tập hội nghị chủ nợ, bán đấu giá và tuyên bố phá sản do tòa án
                nhân dân các cấp ban hành.
@@ -14,7 +14,7 @@
          </div>
       </section>
 
-      <section class="container mx-auto px-9 pt-7">
+      <section class="container mx-auto px-4 sm:px-6 lg:px-9 pt-7">
          <div class="flex flex-wrap gap-3 items-center justify-between">
             <div class="relative flex-1 min-w-[280px] max-w-[440px]">
                <UIcon name="material-symbols:search"
@@ -48,10 +48,10 @@
          </div>
       </section>
 
-      <section class="container mx-auto px-9 pt-3.5 pb-2">
-         <div class="border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden">
+      <section class="container mx-auto px-4 sm:px-6 lg:px-9 pt-3.5 pb-2">
+         <div class="hidden md:block border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden">
             <div
-               class="hidden md:grid grid-cols-[200px_1fr_150px_170px_110px] gap-4 items-center px-5 py-3.5 bg-gray-100 dark:bg-gray-800/40 uppercase tracking-wide text-[11px] font-bold text-gray-500 dark:text-gray-400">
+               class="grid grid-cols-[200px_1fr_150px_170px_110px] gap-4 items-center px-5 py-3.5 bg-gray-100 dark:bg-gray-800/40 uppercase tracking-wide text-[11px] font-bold text-gray-500 dark:text-gray-400">
                <div>Tòa án</div>
                <div>Doanh nghiệp / nội dung</div>
                <div>Loại</div>
@@ -61,7 +61,7 @@
 
             <template v-if="filtered.length">
                <div v-for="(a, i) in filtered" :key="a.no"
-                  class="grid md:grid-cols-[200px_1fr_150px_170px_110px] gap-1.5 md:gap-4 md:items-center px-5 py-4 hover:bg-gray-50 dark:hover:bg-gray-800/40 transition-colors"
+                  class="grid grid-cols-[200px_1fr_150px_170px_110px] gap-4 items-center px-5 py-4 hover:bg-gray-50 dark:hover:bg-gray-800/40 transition-colors"
                   :class="i > 0 ? 'border-t border-gray-200 dark:border-gray-800' : ''">
                   <div class="text-[13px] font-semibold text-primary">{{ a.court }}</div>
                   <NuxtLink :to="`/thong-bao-pha-san/${a.slug}`"
@@ -74,7 +74,32 @@
                   <div class="text-[13px] text-gray-500 dark:text-gray-400">{{ a.date }}</div>
                </div>
             </template>
-            <div v-else class="px-5 py-12 text-center border-t border-gray-200 dark:border-gray-800">
+            <div v-else class="px-5 py-12 text-center">
+               <div class="text-base font-bold mb-1.5">Không tìm thấy thông báo phù hợp</div>
+               <div class="text-sm text-gray-500 dark:text-gray-400">Thử từ khóa khác, chọn tòa án hoặc loại "Tất cả".
+               </div>
+            </div>
+         </div>
+         <div class="md:hidden">
+            <div v-if="filtered.length" class="flex flex-col gap-3">
+               <NuxtLink v-for="a in filtered" :key="a.no" :to="`/thong-bao-pha-san/${a.slug}`"
+                  class="block border border-gray-200 dark:border-gray-800 rounded-xl p-4 hover:border-primary transition-colors">
+                  <div class="flex items-center justify-between gap-3 mb-2">
+                     <span class="text-[13px] font-semibold text-primary">{{ a.court }}</span>
+                     <span
+                        class="shrink-0 inline-block bg-primary/10 text-primary text-[11px] font-semibold px-2.5 py-1 rounded-full whitespace-nowrap">{{
+                        a.type }}</span>
+                  </div>
+                  <div class="text-[14.5px] font-semibold leading-snug mb-2.5">{{ a.title }}</div>
+                  <div class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+                     <span class="font-mono">{{ a.no }}</span>
+                     <span class="opacity-50">·</span>
+                     <span>{{ a.date }}</span>
+                  </div>
+               </NuxtLink>
+            </div>
+            <div v-else
+               class="border border-gray-200 dark:border-gray-800 rounded-2xl px-5 py-12 text-center">
                <div class="text-base font-bold mb-1.5">Không tìm thấy thông báo phù hợp</div>
                <div class="text-sm text-gray-500 dark:text-gray-400">Thử từ khóa khác, chọn tòa án hoặc loại "Tất cả".
                </div>
