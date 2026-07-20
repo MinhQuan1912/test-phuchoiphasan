@@ -5,8 +5,8 @@
             <img src="https://picsum.photos/300/200" alt="" class="w-full h-full object-cover object-center" />
          </div>
          <div class="absolute inset-0 hero-overlay"></div>
-         <div class="relative container mx-auto px-4 sm:px-6 lg:px-9 py-14 max-w-3xl text-center">
-            <p class="uppercase tracking-[0.14em] text-xs font-bold text-white/85">Hỗ trợ &amp; giải đáp</p>
+         <div class="relative container mx-auto px-4 sm:px-6 lg:px-9 py-20 sm:py-28 max-w-3xl text-center">
+            <p class="uppercase tracking-[0.14em] text-sm font-bold text-white/85">Hỗ trợ &amp; giải đáp</p>
             <h1 class="mt-3 mb-3 text-3xl sm:text-4xl lg:text-[42px] font-extrabold tracking-tight text-white">Câu hỏi thường gặp</h1>
             <p class="text-white/82 leading-relaxed max-w-lg mx-auto mb-7">
                Giải đáp các thắc mắc phổ biến về thủ tục phá sản, quản tài viên, quyền của chủ nợ và người lao động.
@@ -16,7 +16,7 @@
                <UIcon name="material-symbols:search"
                   class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                <input v-model="searchQuery" type="text" placeholder="Nhập từ khóa câu hỏi..." class="w-full h-13 rounded-xl border border-white/25 bg-white
-                     pl-12 pr-4 text-[15px] text-gray-900 outline-none shadow-2xl" />
+                     pl-12 pr-4 text-[17px] text-gray-900 outline-none shadow-2xl" />
             </div>
          </div>
       </section>
@@ -24,7 +24,7 @@
       <section class="container mx-auto px-4 sm:px-6 lg:px-9 pt-10 pb-2 max-w-5xl">
          <div class="flex flex-wrap gap-2.5 justify-center mb-7">
             <button v-for="cat in categories" :key="cat" type="button"
-               class="h-9 px-4 inline-flex items-center rounded-full text-[13px] font-semibold border transition-all"
+               class="h-9 px-4 inline-flex items-center rounded-full text-[15px] font-semibold border transition-all"
                :class="cat === activeCategory
                   ? 'bg-primary text-white border-primary'
                   : 'bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-800 hover:border-primary'"
@@ -34,10 +34,10 @@
          </div>
 
          <div v-if="filteredFaqs.length" class="space-y-3">
-            <UAccordion :items="accordionItems" type="multiple" class="space-y-3 text-lg" :ui="{ label: 'text-xl' }">
+            <UAccordion :items="accordionItems" type="multiple" class="space-y-3 text-xl" :ui="{ label: 'text-xl' }">
 
                <template #body="{ item }">
-                  <div class="text-lg leading-relaxed text-gray-500 dark:text-gray-400">
+                  <div class="text-xl leading-relaxed text-gray-500 dark:text-gray-400">
                      {{ item.answer }}
                   </div>
                </template>
@@ -45,8 +45,8 @@
          </div>
 
          <div v-else class="text-center py-12 text-gray-500 dark:text-gray-400">
-            <p class="text-lg font-bold text-gray-900 dark:text-gray-100 mb-1.5">Không tìm thấy câu hỏi phù hợp</p>
-            <p class="text-sm">Thử từ khóa khác hoặc chọn chủ đề "Tất cả".</p>
+            <p class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-1.5">Không tìm thấy câu hỏi phù hợp</p>
+            <p class="text-base">Thử từ khóa khác hoặc chọn chủ đề "Tất cả".</p>
          </div>
       </section>
 

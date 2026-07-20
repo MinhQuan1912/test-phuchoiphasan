@@ -3,9 +3,8 @@
       <div class="flex items-center justify-between h-16 lg:h-20">
          <div class="flex justify-between items-center gap-4 h-10">
             <NuxtLink to="/" class="shrink-0">
-               <img src="/favicon.ico" alt="Logo" class="h-10">
+               <img src="/images/logo.png" alt="Logo" class="h-20">
             </NuxtLink>
-            <div class="hidden lg:block h-8 border border-primary rounded-md" />
             <nav class="hidden lg:flex items-center gap-6">
                <template v-for="item in nav" :key="item.name">
                   <NuxtLink v-if="item.link" :to="item.link" class="
@@ -29,7 +28,7 @@
                         class="bg-dark absolute top-full -left-3 py-2 opacity-0 invisible transition-all duration-200 ease group-hover:opacity-100 group-hover:visible  bg-white shadow-md rounded-xl w-50">
                         <li v-for="sub in item.items" :key="sub.link" class="flex h-10 items-center">
                            <NuxtLink :to="sub.link"
-                              class="px-4 w-full h-full font-bold flex items-center text-sm hover:bg-gray-100 hover:cursor-pointer border-l-4 hover:border-blue-300 hover:text-primary"
+                              class="px-4 w-full h-full font-bold flex items-center text-base hover:bg-gray-100 hover:cursor-pointer border-l-4 hover:border-primary hover:text-primary"
                               :class="isActive(sub.link) ? 'border-primary text-primary bg-gray-50' : 'border-transparent text-gray-700'">
                               {{ sub.name }}
                            </NuxtLink>
@@ -41,7 +40,7 @@
          </div>
          <div class="flex items-center gap-2 sm:gap-4">
             <div class="flex items-center">
-               <input ref="searchInput" v-model="searchQuery" type="text" placeholder="Tìm kiếm..." class="h-8 rounded-md border border-gray-300 px-3 text-sm outline-none
+               <input ref="searchInput" v-model="searchQuery" type="text" placeholder="Tìm kiếm..." class="h-8 rounded-md border border-gray-300 px-3 text-base outline-none
                         transition-all duration-300 ease-out focus:border-primary"
                   :class="showSearch ? 'w-36 sm:w-48 opacity-100 mr-2' : 'w-0 opacity-0 mr-0 px-0'" @keyup.enter="onSearch" />
                <UTooltip text="Tìm kiếm">
@@ -86,10 +85,10 @@
                      {{ item.name }}
                   </NuxtLink>
                   <div v-else>
-                     <div class="px-3 pt-3 pb-1 text-xs font-bold uppercase tracking-wide text-gray-400">{{ item.name }}
+                     <div class="px-3 pt-3 pb-1 text-sm font-bold uppercase tracking-wide text-gray-400">{{ item.name }}
                      </div>
                      <NuxtLink v-for="sub in item.items" :key="sub.link" :to="sub.link"
-                        class="pl-6 pr-3 h-10 flex items-center rounded-lg font-semibold text-sm"
+                        class="pl-6 pr-3 h-10 flex items-center rounded-lg font-semibold text-base"
                         :class="isActive(sub.link) ? 'bg-primary/10 text-primary' : 'hover:bg-gray-100 dark:hover:bg-gray-800'"
                         @click="mobileOpen = false">
                         {{ sub.name }}

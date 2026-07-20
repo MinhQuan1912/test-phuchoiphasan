@@ -5,9 +5,9 @@
             <img src="https://picsum.photos/300/200" alt="" class="w-full h-full object-cover object-center" />
          </div>
          <div class="absolute inset-0 hero-overlay"></div>
-         <div class="relative container mx-auto px-4 sm:px-6 lg:px-9 pt-14 pb-12">
+         <div class="relative container mx-auto px-4 sm:px-6 lg:px-9 pt-20 pb-16 sm:pt-28 sm:pb-24">
             <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-2.5">Thông báo phá sản</h1>
-            <p class="text-[16.5px] leading-relaxed text-white/82 max-w-2xl">
+            <p class="text-[18.5px] leading-relaxed text-white/82 max-w-2xl">
                Tra cứu các quyết định mở thủ tục, triệu tập hội nghị chủ nợ, bán đấu giá và tuyên bố phá sản do tòa án
                nhân dân các cấp ban hành.
             </p>
@@ -20,11 +20,11 @@
                <UIcon name="material-symbols:search"
                   class="absolute left-3.5 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-gray-500" />
                <input v-model="query" type="text" placeholder="Tìm theo tên doanh nghiệp hoặc số quyết định..."
-                  class="w-full h-11 rounded-[10px] border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 pl-[42px] pr-3.5 text-sm outline-none focus:border-primary transition-colors" />
+                  class="w-full h-11 rounded-[10px] border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 pl-[42px] pr-3.5 text-base outline-none focus:border-primary transition-colors" />
             </div>
             <div class="relative">
                <select v-model="activeCourt"
-                  class="h-11 rounded-[10px] border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 pl-3.5 pr-9 text-sm outline-none cursor-pointer appearance-none focus:border-primary transition-colors">
+                  class="h-11 rounded-[10px] border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 pl-3.5 pr-9 text-base outline-none cursor-pointer appearance-none focus:border-primary transition-colors">
                   <option v-for="c in courts" :key="c" :value="c">{{ c }}</option>
                </select>
                <UIcon name="material-symbols:keyboard-arrow-down"
@@ -34,7 +34,7 @@
 
          <div class="flex flex-wrap gap-2.5 mt-4">
             <button v-for="t in types" :key="t" type="button"
-               class="h-9 px-4 inline-flex items-center rounded-full text-[13px] font-semibold border transition-all"
+               class="h-9 px-4 inline-flex items-center rounded-full text-[15px] font-semibold border transition-all"
                :class="t === activeType
                   ? 'bg-primary text-white border-primary'
                   : 'bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-800 hover:border-primary'"
@@ -43,7 +43,7 @@
             </button>
          </div>
 
-         <div class="mt-4 text-[13px] text-gray-500 dark:text-gray-400">
+         <div class="mt-4 text-[15px] text-gray-500 dark:text-gray-400">
             Tìm thấy <strong class="text-gray-900 dark:text-gray-100">{{ filtered.length }}</strong> thông báo
          </div>
       </section>
@@ -51,7 +51,7 @@
       <section class="container mx-auto px-4 sm:px-6 lg:px-9 pt-3.5 pb-2">
          <div class="hidden md:block border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden">
             <div
-               class="grid grid-cols-[200px_1fr_150px_170px_110px] gap-4 items-center px-5 py-3.5 bg-gray-100 dark:bg-gray-800/40 uppercase tracking-wide text-[11px] font-bold text-gray-500 dark:text-gray-400">
+               class="grid grid-cols-[200px_1fr_150px_170px_110px] gap-4 items-center px-5 py-3.5 bg-gray-100 dark:bg-gray-800/40 uppercase tracking-wide text-[13px] font-bold text-gray-500 dark:text-gray-400">
                <div>Tòa án</div>
                <div>Doanh nghiệp / nội dung</div>
                <div>Loại</div>
@@ -63,20 +63,20 @@
                <div v-for="(a, i) in filtered" :key="a.no"
                   class="grid grid-cols-[200px_1fr_150px_170px_110px] gap-4 items-center px-5 py-4 hover:bg-gray-50 dark:hover:bg-gray-800/40 transition-colors"
                   :class="i > 0 ? 'border-t border-gray-200 dark:border-gray-800' : ''">
-                  <div class="text-[13px] font-semibold text-primary">{{ a.court }}</div>
+                  <div class="text-[15px] font-semibold text-primary">{{ a.court }}</div>
                   <NuxtLink :to="`/thong-bao-pha-san/${a.slug}`"
-                     class="text-[14.5px] font-semibold leading-snug hover:text-primary transition-colors">{{ a.title }}
+                     class="text-[16.5px] font-semibold leading-snug hover:text-primary transition-colors">{{ a.title }}
                   </NuxtLink>
                   <div><span
-                        class="inline-block bg-primary/10 text-primary text-[11px] font-semibold px-2.5 py-1 rounded-full whitespace-nowrap">{{
+                        class="inline-block bg-primary/10 text-primary text-[13px] font-semibold px-2.5 py-1 rounded-full whitespace-nowrap">{{
                         a.type }}</span></div>
-                  <div class="text-[13px] text-gray-500 dark:text-gray-400 font-mono">{{ a.no }}</div>
-                  <div class="text-[13px] text-gray-500 dark:text-gray-400">{{ a.date }}</div>
+                  <div class="text-[15px] text-gray-500 dark:text-gray-400 font-mono">{{ a.no }}</div>
+                  <div class="text-[15px] text-gray-500 dark:text-gray-400">{{ a.date }}</div>
                </div>
             </template>
             <div v-else class="px-5 py-12 text-center">
-               <div class="text-base font-bold mb-1.5">Không tìm thấy thông báo phù hợp</div>
-               <div class="text-sm text-gray-500 dark:text-gray-400">Thử từ khóa khác, chọn tòa án hoặc loại "Tất cả".
+               <div class="text-lg font-bold mb-1.5">Không tìm thấy thông báo phù hợp</div>
+               <div class="text-base text-gray-500 dark:text-gray-400">Thử từ khóa khác, chọn tòa án hoặc loại "Tất cả".
                </div>
             </div>
          </div>
@@ -85,13 +85,13 @@
                <NuxtLink v-for="a in filtered" :key="a.no" :to="`/thong-bao-pha-san/${a.slug}`"
                   class="block border border-gray-200 dark:border-gray-800 rounded-xl p-4 hover:border-primary transition-colors">
                   <div class="flex items-center justify-between gap-3 mb-2">
-                     <span class="text-[13px] font-semibold text-primary">{{ a.court }}</span>
+                     <span class="text-[15px] font-semibold text-primary">{{ a.court }}</span>
                      <span
-                        class="shrink-0 inline-block bg-primary/10 text-primary text-[11px] font-semibold px-2.5 py-1 rounded-full whitespace-nowrap">{{
+                        class="shrink-0 inline-block bg-primary/10 text-primary text-[13px] font-semibold px-2.5 py-1 rounded-full whitespace-nowrap">{{
                         a.type }}</span>
                   </div>
-                  <div class="text-[14.5px] font-semibold leading-snug mb-2.5">{{ a.title }}</div>
-                  <div class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+                  <div class="text-[16.5px] font-semibold leading-snug mb-2.5">{{ a.title }}</div>
+                  <div class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
                      <span class="font-mono">{{ a.no }}</span>
                      <span class="opacity-50">·</span>
                      <span>{{ a.date }}</span>
@@ -100,8 +100,8 @@
             </div>
             <div v-else
                class="border border-gray-200 dark:border-gray-800 rounded-2xl px-5 py-12 text-center">
-               <div class="text-base font-bold mb-1.5">Không tìm thấy thông báo phù hợp</div>
-               <div class="text-sm text-gray-500 dark:text-gray-400">Thử từ khóa khác, chọn tòa án hoặc loại "Tất cả".
+               <div class="text-lg font-bold mb-1.5">Không tìm thấy thông báo phù hợp</div>
+               <div class="text-base text-gray-500 dark:text-gray-400">Thử từ khóa khác, chọn tòa án hoặc loại "Tất cả".
                </div>
             </div>
          </div>
@@ -111,13 +111,13 @@
                class="w-[38px] h-[38px] flex items-center justify-center border border-gray-200 dark:border-gray-800 rounded-lg text-gray-400"
                disabled>‹</button>
             <button v-for="p in 3" :key="p" type="button"
-               class="w-[38px] h-[38px] flex items-center justify-center rounded-lg text-sm transition-colors" :class="p === page
+               class="w-[38px] h-[38px] flex items-center justify-center rounded-lg text-base transition-colors" :class="p === page
                   ? 'bg-primary text-white font-semibold'
                   : 'border border-gray-200 dark:border-gray-800 hover:border-primary'" @click="page = p">
                {{ p }}
             </button>
             <button type="button"
-               class="w-[38px] h-[38px] flex items-center justify-center border border-gray-200 dark:border-gray-800 rounded-lg text-sm hover:border-primary transition-colors">›</button>
+               class="w-[38px] h-[38px] flex items-center justify-center border border-gray-200 dark:border-gray-800 rounded-lg text-base hover:border-primary transition-colors">›</button>
          </nav>
       </section>
    </div>

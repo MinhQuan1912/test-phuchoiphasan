@@ -5,9 +5,9 @@
                <img src="https://picsum.photos/300/200" alt="" class="w-full h-full object-cover object-center" />
          </div>
          <div class="absolute inset-0 hero-overlay"></div>
-         <div class="relative container mx-auto px-4 sm:px-6 lg:px-9 py-14">
+         <div class="relative container mx-auto px-4 sm:px-6 lg:px-9 py-20 sm:py-28">
             <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-2.5">Tin tức</h1>
-            <p class="text-[16.5px] leading-relaxed text-white/82 max-w-2xl">
+            <p class="text-[18.5px] leading-relaxed text-white/82 max-w-2xl">
                Cập nhật thời sự, quy định pháp luật và phân tích chuyên sâu về phá sản, phục hồi doanh nghiệp.
             </p>
          </div>
@@ -16,7 +16,7 @@
       <section class="container mx-auto px-4 sm:px-6 lg:px-9 pt-7 pb-2">
          <div class="flex flex-wrap gap-2.5 mt-4 mb-7">
             <button v-for="cat in categories" :key="cat" type="button"
-               class="h-9 px-4 inline-flex items-center rounded-full text-[13px] font-semibold border transition-all"
+               class="h-9 px-4 inline-flex items-center rounded-full text-[15px] font-semibold border transition-all"
                :class="cat === activeCategory
                   ? 'bg-primary text-white border-primary'
                   : 'bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-800 hover:border-primary'"
@@ -32,11 +32,11 @@
                <img src="https://picsum.photos/300/200" alt="" class="w-full h-full object-cover object-center" />
             </div>
             <div class="p-9 flex flex-col justify-center">
-               <span class="self-start bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full">{{
+               <span class="self-start bg-primary/10 text-primary text-sm font-semibold px-3 py-1 rounded-full">{{
                   featured.tag }}</span>
                <h2 class="mt-3.5 mb-3 text-2xl font-extrabold leading-snug tracking-tight">{{ featured.title }}</h2>
-               <p class="text-[15px] leading-relaxed text-gray-500 dark:text-gray-400 mb-4">{{ featured.excerpt }}</p>
-               <div class="text-[13px] text-gray-500 dark:text-gray-400">{{ featured.meta }}</div>
+               <p class="text-[17px] leading-relaxed text-gray-500 dark:text-gray-400 mb-4">{{ featured.excerpt }}</p>
+               <div class="text-[15px] text-gray-500 dark:text-gray-400">{{ featured.meta }}</div>
             </div>
          </NuxtLink>
 
@@ -49,11 +49,11 @@
                </div>
                <div class="p-[18px] flex flex-col flex-1">
                   <span
-                     class="self-start bg-primary/10 text-primary text-[11px] font-semibold px-2.5 py-1 rounded-full">{{
+                     class="self-start bg-primary/10 text-primary text-[13px] font-semibold px-2.5 py-1 rounded-full">{{
                      post.tag }}</span>
-                  <h3 class="mt-3 mb-2 text-base font-bold leading-snug">{{ post.title }}</h3>
-                  <p class="text-[13px] leading-relaxed text-gray-500 dark:text-gray-400 mb-3">{{ post.excerpt }}</p>
-                  <div class="mt-auto text-xs text-gray-500 dark:text-gray-400">{{ post.meta }}</div>
+                  <h3 class="mt-3 mb-2 text-lg font-bold leading-snug">{{ post.title }}</h3>
+                  <p class="text-[15px] leading-relaxed text-gray-500 dark:text-gray-400 mb-3">{{ post.excerpt }}</p>
+                  <div class="mt-auto text-sm text-gray-500 dark:text-gray-400">{{ post.meta }}</div>
                </div>
             </NuxtLink>
          </div>
@@ -64,7 +64,7 @@
 
          <div v-else class="mt-9 mb-2 text-center">
             <button type="button"
-               class="inline-flex items-center h-11 px-6 rounded-lg border border-gray-200 dark:border-gray-800 text-sm font-semibold hover:border-primary hover:text-primary transition-colors">
+               class="inline-flex items-center h-11 px-6 rounded-lg border border-gray-200 dark:border-gray-800 text-base font-semibold hover:border-primary hover:text-primary transition-colors">
                Xem thêm bài viết
             </button>
          </div>

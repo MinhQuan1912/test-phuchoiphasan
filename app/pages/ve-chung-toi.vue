@@ -5,170 +5,244 @@
             <img src="https://picsum.photos/300/200" alt="" class="w-full h-full object-cover object-center" />
          </div>
          <div class="absolute inset-0 hero-overlay"></div>
-         <div class="relative container mx-auto px-6 py-14 max-w-3xl text-center">
-            <p class="uppercase tracking-[0.14em] text-xs font-bold text-white/85">Về chúng tôi</p>
-            <h1 class="mt-3 mb-3.5 text-3xl sm:text-4xl lg:text-[42px]/tight font-extrabold tracking-tight text-white">
+         <div class="relative container mx-auto px-4 sm:px-6 lg:px-9 py-16 sm:py-24 lg:py-28 max-w-3xl text-center">
+            <p class="uppercase tracking-[0.14em] text-sm font-bold text-white/85">Về chúng tôi</p>
+            <h1
+               class="mt-3 mb-3.5 text-[26px] sm:text-4xl lg:text-[42px]/tight font-extrabold tracking-tight text-white">
                Chuyên gia đồng hành cùng doanh nghiệp trong giai đoạn khó khăn
             </h1>
-            <p class="text-white/82 text-[17px] leading-relaxed max-w-2xl mx-auto">
-               Quản Tài Viên VN là tổ chức hành nghề quản lý, thanh lý tài sản và tư vấn pháp lý, cung cấp thông tin
-               minh bạch về thủ tục phá sản và phục hồi doanh nghiệp trên toàn quốc.
+            <p class="text-white/82 text-[17px] sm:text-[19px] leading-relaxed max-w-2xl mx-auto">
+               Công ty Hợp danh Quản lý và thanh lý tài sản Việt Nam là một đơn vị hoạt động chuyên nghiệp trong lĩnh vực Dịch vụ tư vấn,
+               tổ chức quản lý và thanh lý tài sản, quyền tài sản, quyền sử dụng đất, vật tư, thiết bị hàng hóa và các dịch vụ khác liên quan
+               đến tổ chức đấu giá, tư vấn đầu tư, tư vấn quản lý dự án đầu tư trong và ngoài nước.
             </p>
          </div>
       </section>
 
-      <section class="container mx-auto px-4 sm:px-6 lg:px-9 py-14">
-         <div class="grid md:grid-cols-2 gap-12 items-center">
+      <section class="container mx-auto px-4 sm:px-6 lg:px-9 py-10 sm:py-14">
+         <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
             <div
-               class="aspect-4/3 rounded-2xl flex items-center justify-center ">
-               <img src="https://picsum.photos/300/200" alt="" class="w-full h-full object-cover object-center" />
+               class="aspect-4/3 rounded-2xl overflow-hidden flex items-center justify-center md:sticky md:top-24">
+               <img src="/images/ve-chung-toi.png" alt="" class="w-full h-full  object-center" />
             </div>
             <div>
-               <div class="flex items-center gap-2.5 mb-4">
-                  <span class="w-1 h-5.5 bg-primary rounded-sm"></span>
-                  <h2 class="text-2xl font-extrabold tracking-tight">Câu chuyện của chúng tôi</h2>
+               <div class="flex items-center gap-2.5 mb-6">
+                  <span class="w-1 h-6 bg-primary rounded-sm"></span>
+                  <h2 class="text-xl sm:text-2xl font-extrabold tracking-tight">Lịch sử hình thành và phát triển</h2>
                </div>
-               <p class="text-[15px] leading-8 text-gray-500 dark:text-gray-400 mb-4">
-                  Được thành lập bởi đội ngũ luật sư và quản tài viên nhiều năm kinh nghiệm, chúng tôi ra đời với mong
-                  muốn giúp doanh nghiệp, chủ nợ và người lao động tiếp cận thông tin phá sản một cách rõ ràng, kịp thời
-                  và đúng luật.
-               </p>
-               <p class="text-[15px] leading-8 text-gray-500 dark:text-gray-400">
-                  Hơn một thập kỷ qua, chúng tôi đã tham gia hàng nghìn vụ việc, từ mở thủ tục, kiểm kê và định giá tài
-                  sản đến xây dựng phương án phục hồi, luôn đặt tính minh bạch và quyền lợi hợp pháp của các bên làm
-                  trọng tâm.
-               </p>
+               <ol class="relative">
+                  <li v-for="(h, i) in history" :key="h.title" class="flex gap-4 sm:gap-5">
+                     <div class="flex-none flex flex-col items-center">
+                        <div
+                           class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center ring-4 ring-primary/10">
+                           <UIcon :name="h.icon" class="w-5 h-5 shrink-0" />
+                        </div>
+                        <span v-if="i < history.length - 1"
+                           class="w-0.5 flex-1 bg-gray-200 dark:bg-gray-800 my-1"></span>
+                     </div>
+                     <div class="pb-8 last:pb-0">
+                        <h3 class="text-[15px] sm:text-lg font-bold leading-10">{{ h.title }}</h3>
+                        <p class="mt-1 text-sm sm:text-[15px] leading-6 sm:leading-7 text-gray-500 dark:text-gray-400">
+                           {{ h.description }}</p>
+                     </div>
+                  </li>
+               </ol>
             </div>
          </div>
       </section>
 
       <section class="bg-white dark:bg-gray-900 border-y border-gray-200 dark:border-gray-800">
-         <div class="container mx-auto px-4 sm:px-6 lg:px-9 py-9 max-w-5xl grid grid-cols-2 md:grid-cols-4">
-            <div v-for="(s, i) in stats" :key="s.label" class="text-center px-4"
+         <div
+            class="container mx-auto px-4 sm:px-6 lg:px-9 py-9 max-w-5xl grid grid-cols-2 md:grid-cols-4 gap-y-8">
+            <div v-for="(s, i) in stats" :key="s.label" class="text-center px-2 sm:px-4"
                :class="i > 0 ? 'md:border-l border-gray-200 dark:border-gray-800' : ''">
-               <div class="text-4xl font-extrabold text-primary tracking-tight leading-none">{{ s.value }}</div>
-               <div class="mt-2 text-sm text-gray-500 dark:text-gray-400">{{ s.label }}</div>
+               <div class="text-3xl sm:text-4xl font-extrabold text-primary tracking-tight leading-none">{{ s.value }}
+               </div>
+               <div class="mt-2 text-[15px] sm:text-base text-gray-500 dark:text-gray-400">{{ s.label }}</div>
             </div>
          </div>
       </section>
 
-      <section class="container mx-auto px-4 sm:px-6 lg:px-9 py-14 ">
-         <div class="text-center mb-8">
-            <p class="uppercase tracking-[0.14em] text-xs font-bold text-primary">Giá trị cốt lõi</p>
-            <h2 class="mt-3 text-3xl font-extrabold tracking-tight">Nguyên tắc chúng tôi theo đuổi</h2>
+      <section class="container mx-auto px-4 sm:px-6 lg:px-9 py-16 max-w-5xl">
+         <div class="mb-11 max-w-2xl mx-auto text-center">
+            <p class="uppercase tracking-[0.14em] text-xs font-bold text-primary">Năng lực dịch vụ</p>
+            <h2 class="mt-3 text-3xl font-extrabold tracking-tight">Lĩnh vực chuyên môn</h2>
          </div>
-         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5.5">
-            <div v-for="v in values" :key="v.title"
-               class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6">
-               <div
-                  class="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center font-extrabold mb-4">
-                  {{ v.n }}</div>
-               <h3 class="text-[17px] font-bold mb-2">{{ v.title }}</h3>
-               <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">{{ v.desc }}</p>
-            </div>
+   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div v-for="e in expertise" :key="e.title" class="h-full bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 flex gap-4 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:border-primary/40">
+         <div class="flex-none w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+            <UIcon :name="e.icon" class="w-5.5 h-5.5 shrink-0" />
          </div>
-      </section>
+         <div>
+            <h3 class="text-[16px] font-extrabold mb-1.5">{{ e.title }}</h3>
+            <p class="text-[13.5px] leading-relaxed text-gray-500 dark:text-gray-400">{{ e.desc }}</p>
+         </div>
+      </div>
+   </div>
+</section>
 
       <section class="bg-gray-100 dark:bg-gray-900/40 border-t border-gray-200 dark:border-gray-800">
-         <div class="container mx-auto px-4 sm:px-6 lg:px-9 py-14">
-            <div class="text-center mb-8">
-               <p class="uppercase tracking-[0.14em] text-xs font-bold text-primary">Đội ngũ</p>
-               <h2 class="mt-3 text-3xl font-extrabold tracking-tight">Chuyên gia của chúng tôi</h2>
+         <div class="container mx-auto px-4 sm:px-6 lg:px-9 py-10 sm:py-14">
+            <div class="text-center mb-7 sm:mb-8">
+               <p class="uppercase tracking-[0.14em] text-sm font-bold text-primary">Đội ngũ</p>
+               <h2 class="mt-3 text-2xl sm:text-3xl font-extrabold tracking-tight">Chuyên gia của chúng tôi</h2>
             </div>
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5.5">
-               <div v-for="member in team" :key="member.name"
-                  class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 text-center">
-                  <div
-                     class=" w-24 h-24 rounded-full mx-auto mb-4 overflow-hidden flex items-center justify-center ">
-                     <img src="https://picsum.photos/300/200" alt="" class="w-full h-full object-cover object-center" />
-                  </div>
-                  <h3 class="text-base font-bold mb-1">{{ member.name }}</h3>
-                  <p class="text-sm text-gray-500 dark:text-gray-400 leading-snug">{{ member.role }}</p>
-               </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5.5 max-w-4xl mx-auto">
+               <UPopover v-for="group in team" :key="group.role" mode="click" :content="{ align: 'center' }">
+                  <button type="button"
+                     class="w-full bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 sm:p-7 text-center transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:border-primary/40 cursor-pointer">
+                     <div
+                        class="w-14 h-14 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mx-auto mb-4">
+                        <UIcon :name="group.icon" class="w-7 h-7 shrink-0" />
+                     </div>
+                     <div class="text-3xl sm:text-4xl font-extrabold text-primary tracking-tight leading-none">
+                        {{ group.members.length }}
+                     </div>
+                     <h3 class="mt-2 text-base sm:text-lg font-bold">{{ group.role }}</h3>
+                     <p class="mt-1 text-sm text-gray-400 dark:text-gray-500 inline-flex items-center gap-1">
+                        Xem danh sách <UIcon name="i-lucide-chevron-down" class="w-4 h-4" />
+                     </p>
+                  </button>
+
+                  <template #content>
+                     <div class="p-5 w-80 sm:w-136">
+                        <div class="flex items-center gap-2 mb-3">
+                           <span class="w-1 h-5 bg-primary rounded-sm"></span>
+                           <p class="text-sm font-bold">{{ group.role }}
+                              <span class="text-gray-400 dark:text-gray-500 font-normal">({{ group.members.length }})</span>
+                           </p>
+                        </div>
+                        <UCarousel v-slot="{ item: page }" :items="chunk(group.members, 3)"
+                           :arrows="group.members.length > 3" :dots="group.members.length > 3"
+                           :ui="{ item: 'basis-full', prev: 'top-10 -translate-y-1/2 start-1 sm:start-1', next: 'top-10 -translate-y-1/2 end-1 sm:end-1', dots: '-bottom-1' }"
+                           class="w-full px-10" :class="group.members.length > 3 ? 'pb-6' : 'pb-1'">
+                           <div class="flex justify-center gap-2 sm:gap-4 w-full">
+                              <div v-for="name in page" :key="name"
+                                 class="flex flex-col items-center text-center gap-2 py-3 px-1 basis-1/3">
+                                 <div
+                                    class="w-14 h-14 rounded-full flex items-center justify-center bg-primary/10 text-primary">
+                                    <UIcon name="i-lucide-user" class="w-7 h-7 shrink-0" />
+                                 </div>
+                                 <p class="text-xs font-semibold leading-tight">{{ name }}</p>
+                              </div>
+                           </div>
+                        </UCarousel>
+                     </div>
+                  </template>
+               </UPopover>
             </div>
          </div>
       </section>
 
-      <section class="container mx-auto px-4 sm:px-6 lg:px-9 py-14 ">
-         <div class="flex items-center gap-2.5 mb-7">
-            <span class="w-1 h-6 bg-primary rounded-sm"></span>
-            <h2 class="text-2xl font-extrabold tracking-tight">Quy trình làm việc</h2>
+      <section class="relative overflow-hidden text-white">
+   <img src="/images/bg-quote.png" alt="" class="absolute inset-0 w-full h-full object-cover object-center" />
+   <div class="absolute inset-0 quote-overlay"></div>
+   <div class="container mx-auto px-4 sm:px-6 lg:px-9 py-14 sm:py-16 lg:py-18 max-w-5xl relative grid grid-cols-1 lg:grid-cols-[1.25fr_1fr] gap-10 sm:gap-12 lg:gap-14 items-center">
+      <div class="relative">
+         <UIcon name="i-lucide-quote" class="w-9 h-9 sm:w-11 sm:h-11 text-white/25 mb-3 sm:mb-4" />
+         <div class="flex items-center gap-3.5 mb-4 sm:mb-5">
+            <span class="w-8.5 h-0.5 bg-white/50"></span>
+            <span class="uppercase tracking-[0.2em] text-xs font-semibold text-white/70">Tôn chỉ hành động</span>
          </div>
-         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5.5">
-            <div v-for="step in process" :key="step.n"
-               class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6">
-               <div class="text-4xl font-extrabold text-primary/25 leading-none mb-3">{{ step.n }}</div>
-               <h3 class="text-base font-bold mb-2">{{ step.title }}</h3>
-               <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">{{ step.desc }}</p>
+         <p class="text-2xl sm:text-3xl lg:text-[33px] font-bold leading-snug sm:leading-[1.32] tracking-tight text-balance">
+            Quản lý và thanh lý tài sản một cách
+            hiệu quả nhất,
+            phục vụ tối đa nhu cầu và lợi ích của khách hàng.
+         </p>
+      </div>
+      <div class="bg-white/7 border border-white/15 rounded-2xl p-6 sm:p-7.5">
+         <p class="text-[15px] sm:text-[15.5px] leading-loose text-white/90">
+            Cam kết <strong class="font-semibold text-white">cung cấp các dịch vụ một cách chuyên nghiệp</strong> đã trở thành phương châm, giá trị và niềm tin của VAML — một phần không thể tách rời trong văn hóa Công ty, đòi hỏi chúng tôi không ngừng tự đổi mới và phát triển.
+         </p>
+         <div class="mt-5.5 pt-5 border-t border-white/15 flex items-center gap-3">
+            <div class="h-10 w-10 px-2.5 rounded-lg bg-white flex items-center justify-center shrink-0">
+               <img src="/images/logo.png" alt="Quản Tài Viên VN" class="h-full w-auto object-contain" />
             </div>
-         </div>
-      </section>
-
-      <section class="container mx-auto px-4 sm:px-6 lg:px-9 pb-14">
-         <div class="bg-primary text-white rounded-2xl px-4 sm:px-6 lg:px-9 py-9 flex flex-wrap items-center justify-between gap-6">
             <div>
-               <h3 class="text-2xl font-extrabold mb-1.5">Cần hỗ trợ về thủ tục phá sản?</h3>
-               <p class="text-white/85 leading-relaxed">Liên hệ để được đội ngũ chuyên gia của chúng tôi tư vấn miễn
-                  phí.</p>
-            </div>
-            <div class="flex flex-wrap gap-3">
-               <NuxtLink to="/"
-                  class="h-11 inline-flex items-center px-5 rounded-lg bg-white text-primary font-bold">
-                  Liên hệ tư vấn
-               </NuxtLink>
-               <a href="tel:19006789"
-                  class="h-11 inline-flex items-center px-5 rounded-lg border-[1.5px] border-white/60 text-white font-semibold">
-                  Gọi 1900 6789
-               </a>
+               <div class="font-semibold text-sm">Bùi Phan Anh</div>
+               <div class="text-[12.5px] text-white/60">Giám đốc công ty</div>
             </div>
          </div>
-      </section>
+      </div>
+   </div>
+</section>
    </div>
 </template>
 
 <script setup lang="ts">
 useHead({ title: 'Về chúng tôi' })
 
-const stats = [
-   { value: '12+', label: 'Năm kinh nghiệm' },
-   { value: '1.248', label: 'Vụ việc đã xử lý' },
-   { value: '860', label: 'Doanh nghiệp đồng hành' },
-   { value: '63', label: 'Tỉnh / thành phủ sóng' }
-]
+const chunk = <T,>(arr: T[], size: number): T[][] =>
+   Array.from({ length: Math.ceil(arr.length / size) }, (_, i) => arr.slice(i * size, i * size + size))
 
-const values = [
-   { n: '01', title: 'Chính trực', desc: 'Minh bạch và trung thực trong từng quyết định, số liệu và báo cáo gửi tòa án.' },
-   { n: '02', title: 'Chuyên môn', desc: 'Đội ngũ luật sư và quản tài viên giàu kinh nghiệm, cập nhật quy định mới nhất.' },
-   { n: '03', title: 'Tận tâm', desc: 'Đặt quyền lợi hợp pháp của doanh nghiệp, chủ nợ và người lao động lên hàng đầu.' },
-   { n: '04', title: 'Đúng luật', desc: 'Tuân thủ nghiêm ngặt Luật Phá sản và các quy định pháp luật liên quan.' }
+const stats = [
+   { value: '10', label: 'Năm kinh nghiệm' },
+   { value: '50+', label: 'Vụ việc đã và đang xử lý' },
+   { value: '100+', label: 'Doanh nghiệp đồng hành' },
+   { value: '34', label: 'Tỉnh / thành phủ sóng' }
 ]
 
 const team = [
-   { name: 'Nguyễn Văn Hùng', role: 'Quản tài viên trưởng · Luật sư điều hành' },
-   { name: 'Trần Thị Mai', role: 'Luật sư cấp cao · Tái cấu trúc & M&A' },
-   { name: 'Lê Quốc Anh', role: 'Quản tài viên · Định giá tài sản' },
-   { name: 'Phạm Thu Hà', role: 'Chuyên viên pháp lý · Quan hệ chủ nợ' }
+   {
+      role: 'Quản tài viên',
+      icon: 'i-lucide-briefcase',
+      members: [
+         'Bùi Phan Anh', 'Dương Kim Sơn', 'Lê Vĩnh Thụy', 'Nguyễn Văn Linh',
+         'Đào Văn Thắng', 'Võ Thị Hồng Hạnh', 'Nguyễn Đình Minh', 'Nguyễn Hồng Thái',
+         'Nguyễn Quốc Thành', 'Lưu Đức Vượng', 'Nguyễn Mạnh Hoàng Sang', 'Nguyễn Thị Nhược Ý',
+         'Nguyễn Thị Hằng', 'Bùi Thị Hải Yến', 'Lê Ngọc Trung', 'Nguyễn Thị Hồng Liên'
+      ]
+   },
+   {
+      role: 'Luật sư',
+      icon: 'i-lucide-scale',
+      members: [
+         'Bùi Phan Anh', 'Lê Vĩnh Thụy', 'Ngô Vũ Văn Hà', 'Nguyễn Quốc Thành'
+      ]
+   },
+   {
+      role: 'Kiểm toán viên',
+      icon: 'i-lucide-calculator',
+      members: [
+         'Lê Việt Hưng', 'Đoàn Văn Hồng', 'Trần Ngọc Hùng', 'Trần Thị Trinh',
+         'Nguyễn Văn Hoàng', 'Lê Thị Hoài An', 'Huỳnh Thị Bảo Khám', 'Chu Hoàng Vĩnh'
+      ]
+   }
 ]
 
-const process = [
-   { n: '01', title: 'Tiếp nhận & đánh giá', desc: 'Tư vấn ban đầu, đánh giá tình trạng tài chính và khả năng thanh toán của doanh nghiệp.' },
-   { n: '02', title: 'Mở thủ tục & kiểm kê', desc: 'Hỗ trợ nộp đơn, chỉ định quản tài viên, kiểm kê và lập danh sách chủ nợ.' },
-   { n: '03', title: 'Hội nghị & phương án', desc: 'Tổ chức hội nghị chủ nợ, xây dựng và biểu quyết phương án phục hồi.' },
-   { n: '04', title: 'Phục hồi hoặc thanh lý', desc: 'Triển khai phục hồi hoặc thanh lý, phân chia tài sản theo thứ tự ưu tiên.' }
+const history = [
+   { title: '10/09/2015 · Thành lập', icon: 'i-lucide-building-2', description: 'Công ty Hợp danh Quản lý và Thanh lý tài sản Việt Nam (VAML) được thành lập theo Giấy chứng nhận đăng ký doanh nghiệp số 0106987347 do Sở Kế hoạch và Đầu tư Thành phố Hà Nội cấp.' },
+   { title: '15/08/2016', icon: 'i-lucide-badge-check', description: 'Được Sở Tư pháp thành phố Hà Nội công bố là đơn vị đủ điều kiện quản lý và thanh lý tài sản.' },
+   { title: '24/09/2025 · Thay đổi lần 3', icon: 'i-lucide-rocket', description: 'Đăng ký thay đổi thông tin hoạt động để việc triển khai việc quản lý, thanh lý tài sản theo thủ tục phá sản đạt hiệu quả.' }
+]
+
+const expertise = [
+   { icon: 'i-lucide-landmark', title: 'Quản lý tài sản', desc: 'Quản lý các tài sản của khách hàng, bao gồm bất động sản, thiết bị, phương tiện và các tài sản khác.' },
+   { icon: 'i-lucide-refresh-cw', title: 'Tái cơ cấu', desc: 'Xây dựng phương án tái cơ cấu, phục hồi doanh nghiệp; tư vấn sắp xếp lại bộ máy, nhân sự và mô hình kinh doanh hiệu quả.' },
+   { icon: 'i-lucide-gavel', title: 'Thanh lý tài sản', desc: 'Bán hoặc chuyển nhượng tài sản không còn giá trị sử dụng, giúp doanh nghiệp thu về giá trị tối ưu.' },
+   { icon: 'i-lucide-scale', title: 'Tư vấn định giá tài sản', desc: 'Đánh giá giá trị thực tế của tài sản, đồng thời tư vấn phương án xử lý tối ưu, hiệu quả.' },
+   { icon: 'i-lucide-briefcase', title: 'Tư vấn pháp lý & tài chính', desc: 'Tư vấn các vấn đề pháp lý, tài chính liên quan đến tài sản trong giao dịch thanh lý, phá sản và tình huống đặc biệt.' },
+   { icon: 'i-lucide-file-warning', title: 'Tư vấn xử lý nợ xấu', desc: 'Tham gia thu hồi nợ hoặc thanh lý tài sản của đối tượng nợ xấu, giúp giải quyết các khoản nợ khó thu hồi.' }
 ]
 </script>
 
 <style scoped>
 .hero-overlay {
-   background: linear-gradient(90deg,
-         rgba(8, 16, 30, 0.9) 0%,
-         rgba(8, 16, 30, 0.75) 35%,
-         rgba(8, 16, 30, 0.3) 65%,
-         transparent 100%);
+   background:
+      radial-gradient(120% 120% at 50% 40%, rgba(8, 16, 30, 0.55) 0%, rgba(8, 16, 30, 0.82) 100%),
+      linear-gradient(180deg, rgba(8, 16, 30, 0.55) 0%, rgba(8, 16, 30, 0.7) 100%);
 }
 
 .ph-round {
    background: repeating-linear-gradient(135deg, rgba(15, 86, 179, 0.1) 0 8px, transparent 8px 16px), rgb(231 240 252);
+}
+
+.quote-overlay {
+   background: rgba(0, 0, 0, 0.6);
+}
+
+.dark .quote-overlay {
+   background: rgba(0, 0, 0, 0.72);
 }
 
 .dark .ph,

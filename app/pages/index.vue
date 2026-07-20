@@ -7,12 +7,12 @@
          <div class="absolute inset-0 hero-overlay"></div>
          <div class="relative container mx-auto px-4 sm:px-6 lg:px-9 pt-12 pb-10 sm:pt-[70px] sm:pb-[60px]">
             <div class="max-w-[720px]">
-               <p class="uppercase tracking-[0.16em] text-xs font-bold text-white/80">Cổng thông tin phá sản &amp; phục
-                  hồi doanh nghiệp</p>
+               <p class="uppercase tracking-[0.16em] text-sm font-bold text-white/80">Cổng thông tin quản lý &amp;
+                  thanh lý tài sản</p>
                <h1 class="my-4 text-3xl sm:text-4xl lg:text-[46px]/tight font-extrabold tracking-tight text-white">
-                  Thông tin phá sản minh bạch, cập nhật theo từng quyết định của tòa án
+                  Thông tin phá sản minh bạch, cập nhật theo từng quyết định của tòa án<nav></nav>
                </h1>
-               <p class="mb-7 text-lg leading-relaxed text-white/85 max-w-xl">
+               <p class="mb-7 text-xl leading-relaxed text-white/85 max-w-xl">
                   Tra cứu thông báo phá sản, theo dõi tin tức pháp lý và nhận tư vấn chuyên sâu về quản lý, thanh lý tài
                   sản doanh nghiệp trên toàn quốc.
                </p>
@@ -30,7 +30,8 @@
          </div>
       </section>
 
-      <section class="container mx-auto px-4 sm:px-6 lg:px-9 pt-11 pb-3 grid lg:grid-cols-[1fr_380px] gap-11 items-start">
+      <section
+         class="container mx-auto px-4 sm:px-6 lg:px-9 pt-11 pb-3 grid lg:grid-cols-[1fr_380px] gap-11 items-start">
          <div>
             <div class="flex items-center gap-2.5 mb-5">
                <span class="w-1 h-5.5 bg-primary rounded-sm"></span>
@@ -42,28 +43,28 @@
                   <img src="https://picsum.photos/300/200" alt="" class="w-full h-full object-cover" />
                </div>
                <span
-                  class="inline-block mt-4 bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full">{{
+                  class="inline-block mt-4 bg-primary/10 text-primary text-sm font-semibold px-3 py-1 rounded-full">{{
                      featured.tag }}</span>
                <h3 class="mt-3 mb-2.5 text-[27px] font-extrabold leading-snug tracking-tight">{{ featured.title }}</h3>
-               <p class="mb-2.5 text-[15px] leading-relaxed text-gray-500 dark:text-gray-400">{{ featured.excerpt }}</p>
-               <div class="text-[13px] text-gray-500 dark:text-gray-400">{{ featured.meta }}</div>
+               <p class="mb-2.5 text-[17px] leading-relaxed text-gray-500 dark:text-gray-400">{{ featured.excerpt }}</p>
+               <div class="text-[15px] text-gray-500 dark:text-gray-400">{{ featured.meta }}</div>
             </NuxtLink>
 
             <div class="h-px bg-gray-200 dark:bg-gray-800 my-6.5"></div>
 
             <NuxtLink v-for="post in secondary" :key="post.slug" :to="`/tin-tuc/${post.slug}`"
-               class="flex gap-4.5 mb-5.5 last:mb-0">
-               <div class="w-28 sm:w-45 shrink-0 aspect-16/10 rounded-xl flex items-center justify-center">
+               class="flex flex-col sm:flex-row gap-4 sm:gap-4.5 mb-6 last:mb-0">
+               <div class="w-full sm:w-64 lg:w-80 shrink-0 aspect-16/10 rounded-xl overflow-hidden">
                   <img src="https://picsum.photos/300/200" alt="" class="w-full h-full object-cover" />
                </div>
                <div>
                   <span
-                     class="inline-block bg-primary/10 text-primary text-[11px] font-semibold px-2.5 py-1 rounded-full">{{
+                     class="inline-block bg-primary/10 text-primary text-[13px] font-semibold px-2.5 py-1 rounded-full">{{
                         post.tag }}</span>
-                  <h4 class="mt-2 mb-1.5 text-[17px] font-bold leading-snug">{{ post.title }}</h4>
-                  <p class="mb-2.5 text-[15px] leading-relaxed text-gray-500 dark:text-gray-400">{{ post.excerpt }}
+                  <h4 class="mt-2 mb-1.5 text-[19px] font-bold leading-snug">{{ post.title }}</h4>
+                  <p class="mb-2.5 text-[17px] leading-relaxed text-gray-500 dark:text-gray-400">{{ post.excerpt }}
                   </p>
-                  <div class="text-xs text-gray-500 dark:text-gray-400">{{ post.time }}</div>
+                  <div class="text-sm text-gray-500 dark:text-gray-400">{{ post.time }}</div>
                </div>
             </NuxtLink>
          </div>
@@ -71,15 +72,15 @@
          <aside>
             <div class="flex items-center gap-2.5 mb-1.5">
                <span class="w-1 h-5 bg-primary rounded-sm"></span>
-               <h3 class="text-[17px] font-extrabold">Mới cập nhật</h3>
+               <h3 class="text-[19px] font-extrabold">Mới cập nhật</h3>
             </div>
             <NuxtLink v-for="(item, i) in latest" :key="item.slug" :to="`/tin-tuc/${item.slug}`"
                class="flex gap-3 py-3.5 group" :class="i > 0 ? 'border-t border-gray-200 dark:border-gray-800' : ''">
-               <span class="font-extrabold text-[15px] text-primary min-w-5">{{ String(i + 1).padStart(2, '0') }}</span>
+               <span class="font-extrabold text-[17px] text-primary min-w-5">{{ String(i + 1).padStart(2, '0') }}</span>
                <div>
-                  <div class="text-sm font-semibold leading-snug group-hover:text-primary transition-colors">{{
+                  <div class="text-base font-semibold leading-snug group-hover:text-primary transition-colors">{{
                      item.title }}</div>
-                  <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">{{ item.meta }}</div>
+                  <div class="text-sm text-gray-500 dark:text-gray-400 mt-1">{{ item.meta }}</div>
                </div>
             </NuxtLink>
          </aside>
@@ -88,7 +89,7 @@
       <section class="bg-gray-100 dark:bg-gray-900/40 border-t border-gray-200 dark:border-gray-800 mt-8">
          <div class="container mx-auto px-4 sm:px-6 lg:px-9 py-12">
             <div class="text-center mb-8">
-               <p class="uppercase tracking-[0.14em] text-xs font-bold text-primary">Chúng tôi làm gì</p>
+               <p class="uppercase tracking-[0.14em] text-sm font-bold text-primary">Chúng tôi làm gì</p>
                <h2 class="mt-3 text-3xl font-extrabold tracking-tight">Dịch vụ của chúng tôi</h2>
             </div>
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5.5">
@@ -98,14 +99,14 @@
                      class="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center font-extrabold mb-4 transition-all duration-300 group-hover:bg-primary group-hover:text-white">
                      {{ svc.n }}
                   </div>
-                  <h3 class="text-[17px] font-bold mb-2 transition-colors duration-300 group-hover:text-primary">
+                  <h3 class="text-[19px] font-bold mb-2 transition-colors duration-300 group-hover:text-primary">
                      {{ svc.title }}
                   </h3>
-                  <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-3.5">
+                  <p class="text-base text-gray-500 dark:text-gray-400 leading-relaxed mb-3.5">
                      {{ svc.desc }}
                   </p>
                   <div
-                     class="text-sm font-semibold text-primary inline-flex items-center gap-1 transition-all duration-300 group-hover:gap-2">
+                     class="text-base font-semibold text-primary inline-flex items-center gap-1 transition-all duration-300 group-hover:gap-2">
                      Tìm hiểu
                      <span class="transition-transform duration-300 group-hover:translate-x-1">
                         →
@@ -123,12 +124,12 @@
                   <span class="w-1 h-6 bg-primary rounded-sm"></span>
                   <h2 class="text-2xl font-extrabold tracking-tight">Thông báo phá sản mới nhất</h2>
                </div>
-               <NuxtLink to="/thong-bao-pha-san" class="text-[13px] font-semibold text-primary">Xem tất cả →</NuxtLink>
+               <NuxtLink to="/thong-bao-pha-san" class="text-[15px] font-semibold text-primary">Xem tất cả →</NuxtLink>
             </div>
 
             <div class="flex flex-wrap gap-2.5 mb-3.5">
                <button v-for="court in courts" :key="court" type="button"
-                  class="h-9 px-4 inline-flex items-center rounded-full text-[13px] font-semibold border transition-all"
+                  class="h-9 px-4 inline-flex items-center rounded-full text-[15px] font-semibold border transition-all"
                   :class="court === activeCourt
                      ? 'bg-primary text-white border-primary'
                      : 'bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-800 hover:border-primary'"
@@ -137,46 +138,30 @@
                </button>
             </div>
 
-            <div class="hidden md:block border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden">
-               <div
-                  class="grid grid-cols-[210px_1fr_160px_170px_100px] gap-4 items-center px-[18px] py-3.5 bg-gray-100 dark:bg-gray-800/40 uppercase tracking-wide text-[11px] font-bold text-gray-500 dark:text-gray-400">
-                  <div>Tòa án</div>
-                  <div>Nội dung thông báo</div>
-                  <div>Loại</div>
-                  <div>Số quyết định</div>
-                  <div>Ngày</div>
-               </div>
-               <div v-for="(a, i) in announcementsPreview" :key="a.no"
-                  class="grid grid-cols-[210px_1fr_160px_170px_100px] gap-4 items-center px-[18px] py-[15px] hover:bg-gray-50 dark:hover:bg-gray-800/40 transition-colors"
-                  :class="i > 0 ? 'border-t border-gray-200 dark:border-gray-800' : ''">
-                  <div class="text-[13px] font-semibold text-primary">{{ a.court }}</div>
-                  <NuxtLink to="/thong-bao-pha-san"
-                     class="text-sm font-semibold leading-snug hover:text-primary transition-colors">{{ a.title }}
-                  </NuxtLink>
-                  <div><span
-                        class="inline-block bg-primary/10 text-primary text-[11px] font-semibold px-2.5 py-1 rounded-full">{{
-                           a.type }}</span></div>
-                  <div class="text-[13px] text-gray-500 dark:text-gray-400">{{ a.no }}</div>
-                  <div class="text-[13px] text-gray-500 dark:text-gray-400">{{ a.date }}</div>
-               </div>
-            </div>
-
-            <div class="md:hidden flex flex-col gap-3">
-               <NuxtLink v-for="a in announcementsPreview" :key="a.no" to="/thong-bao-pha-san"
-                  class="block border border-gray-200 dark:border-gray-800 rounded-xl p-4 hover:border-primary transition-colors">
-                  <div class="flex items-center justify-between gap-3 mb-2">
-                     <span class="text-[13px] font-semibold text-primary">{{ a.court }}</span>
-                     <span
-                        class="shrink-0 inline-block bg-primary/10 text-primary text-[11px] font-semibold px-2.5 py-1 rounded-full">{{
-                           a.type }}</span>
+            <div class="border border-gray-200 dark:border-gray-800 rounded-2xl overflow-x-auto">
+               <div class="min-w-[940px]">
+                  <div
+                     class="grid grid-cols-[210px_1fr_160px_170px_100px] gap-4 items-center px-[18px] py-3.5 bg-gray-100 dark:bg-gray-800/40 uppercase tracking-wide text-[13px] font-bold text-gray-500 dark:text-gray-400">
+                     <div>Tòa án</div>
+                     <div>Nội dung thông báo</div>
+                     <div>Loại</div>
+                     <div>Số quyết định</div>
+                     <div>Ngày</div>
                   </div>
-                  <div class="text-sm font-semibold leading-snug mb-2.5">{{ a.title }}</div>
-                  <div class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
-                     <span>{{ a.no }}</span>
-                     <span class="opacity-50">·</span>
-                     <span>{{ a.date }}</span>
+                  <div v-for="(a, i) in announcementsPreview" :key="a.no"
+                     class="grid grid-cols-[210px_1fr_160px_170px_100px] gap-4 items-center px-[18px] py-[15px] hover:bg-gray-50 dark:hover:bg-gray-800/40 transition-colors"
+                     :class="i > 0 ? 'border-t border-gray-200 dark:border-gray-800' : ''">
+                     <div class="text-[15px] font-semibold text-primary">{{ a.court }}</div>
+                     <NuxtLink to="/thong-bao-pha-san"
+                        class="text-base font-semibold leading-snug hover:text-primary transition-colors">{{ a.title }}
+                     </NuxtLink>
+                     <div><span
+                           class="inline-block bg-primary/10 text-primary text-[13px] font-semibold px-2.5 py-1 rounded-full">{{
+                              a.type }}</span></div>
+                     <div class="text-[15px] text-gray-500 dark:text-gray-400">{{ a.no }}</div>
+                     <div class="text-[15px] text-gray-500 dark:text-gray-400">{{ a.date }}</div>
                   </div>
-               </NuxtLink>
+               </div>
             </div>
          </div>
       </section>
@@ -188,8 +173,8 @@
                <p class="text-white/85 leading-relaxed">Liên hệ để được đội ngũ chuyên gia tư vấn miễn phí.</p>
             </div>
             <div class="flex flex-wrap gap-3">
-               <NuxtLink to="/"
-                  class="h-11 inline-flex items-center px-5 rounded-lg bg-white text-primary font-bold">Liên hệ tư vấn
+               <NuxtLink to="/" class="h-11 inline-flex items-center px-5 rounded-lg bg-white text-primary font-bold">
+                  Liên hệ tư vấn
                </NuxtLink>
                <a href="tel:19006789"
                   class="h-11 inline-flex items-center px-5 rounded-lg border-[1.5px] border-white/60 text-white font-semibold">Gọi

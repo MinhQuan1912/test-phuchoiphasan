@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
-  modules: ["@nuxt/ui", "@vueuse/nuxt","@nuxt/fonts"],
+  modules: ["@nuxt/ui", "@vueuse/nuxt", "@nuxt/fonts"],
   css: ["~/assets/css/main.css"],
   app: {
     head: {
@@ -10,6 +10,13 @@ export default defineNuxtConfig({
       meta: [
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
+      ],
+      link: [
+        {
+          rel: "icon",
+          type: "image/png",
+          href: "/images/logo.png",
+        },
       ],
     },
   },
