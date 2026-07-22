@@ -12,8 +12,10 @@
                Chuyên gia đồng hành cùng doanh nghiệp trong giai đoạn khó khăn
             </h1>
             <p class="text-white/82 text-[17px] sm:text-[19px] leading-relaxed max-w-2xl mx-auto">
-               Công ty Hợp danh Quản lý và thanh lý tài sản Việt Nam là một đơn vị hoạt động chuyên nghiệp trong lĩnh vực Dịch vụ tư vấn,
-               tổ chức quản lý và thanh lý tài sản, quyền tài sản, quyền sử dụng đất, vật tư, thiết bị hàng hóa và các dịch vụ khác liên quan
+               Công ty Hợp danh Quản lý và thanh lý tài sản Việt Nam là một đơn vị hoạt động chuyên nghiệp trong lĩnh
+               vực Dịch vụ tư vấn,
+               tổ chức quản lý và thanh lý tài sản, quyền tài sản, quyền sử dụng đất, vật tư, thiết bị hàng hóa và các
+               dịch vụ khác liên quan
                đến tổ chức đấu giá, tư vấn đầu tư, tư vấn quản lý dự án đầu tư trong và ngoài nước.
             </p>
          </div>
@@ -21,11 +23,11 @@
 
       <section class="container mx-auto px-4 sm:px-6 lg:px-9 py-10 sm:py-14">
          <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
-            <div
+            <div v-reveal.left
                class="aspect-4/3 rounded-2xl overflow-hidden flex items-center justify-center md:sticky md:top-24">
                <img src="/images/ve-chung-toi.png" alt="" class="w-full h-full  object-center" />
             </div>
-            <div>
+            <div v-reveal.right>
                <div class="flex items-center gap-2.5 mb-6">
                   <span class="w-1 h-6 bg-primary rounded-sm"></span>
                   <h2 class="text-xl sm:text-2xl font-extrabold tracking-tight">Lịch sử hình thành và phát triển</h2>
@@ -42,7 +44,7 @@
                      </div>
                      <div class="pb-8 last:pb-0">
                         <h3 class="text-[15px] sm:text-lg font-bold leading-10">{{ h.title }}</h3>
-                        <p class="mt-1 text-sm sm:text-[15px] leading-6 sm:leading-7 text-gray-500 dark:text-gray-400">
+                        <p class="text-sm sm:text-[15px] leading-6 sm:leading-7 text-gray-500 dark:text-gray-400">
                            {{ h.description }}</p>
                      </div>
                   </li>
@@ -54,7 +56,8 @@
       <section class="bg-white dark:bg-gray-900 border-y border-gray-200 dark:border-gray-800">
          <div
             class="container mx-auto px-4 sm:px-6 lg:px-9 py-9 max-w-5xl grid grid-cols-2 md:grid-cols-4 gap-y-8">
-            <div v-for="(s, i) in stats" :key="s.label" class="text-center px-2 sm:px-4"
+            <div v-for="(s, i) in stats" :key="s.label" v-reveal :style="{ '--reveal-delay': i * 90 + 'ms' }"
+               class="text-center px-2 sm:px-4"
                :class="i > 0 ? 'md:border-l border-gray-200 dark:border-gray-800' : ''">
                <div class="text-3xl sm:text-4xl font-extrabold text-primary tracking-tight leading-none">{{ s.value }}
                </div>
@@ -64,30 +67,32 @@
       </section>
 
       <section class="container mx-auto px-4 sm:px-6 lg:px-9 py-16 max-w-5xl">
-         <div class="mb-11 max-w-2xl mx-auto text-center">
+         <div v-reveal class="mb-11 max-w-2xl mx-auto text-center">
             <p class="uppercase tracking-[0.14em] text-xs font-bold text-primary">Năng lực dịch vụ</p>
             <h2 class="mt-3 text-3xl font-extrabold tracking-tight">Lĩnh vực chuyên môn</h2>
          </div>
-   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      <div v-for="e in expertise" :key="e.title" class="h-full bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 flex gap-4 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:border-primary/40">
-         <div class="flex-none w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
-            <UIcon :name="e.icon" class="w-5.5 h-5.5 shrink-0" />
+         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div v-for="(e, i) in expertise" :key="e.title" v-reveal
+               :style="{ '--reveal-delay': (i % 3) * 90 + 'ms' }"
+               class="h-full bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 flex gap-4">
+               <div class="flex-none w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+                  <UIcon :name="e.icon" class="w-5.5 h-5.5 shrink-0" />
+               </div>
+               <div>
+                  <h3 class="text-[16px] font-extrabold mb-1.5">{{ e.title }}</h3>
+                  <p class="text-[13.5px] leading-relaxed text-gray-500 dark:text-gray-400">{{ e.desc }}</p>
+               </div>
+            </div>
          </div>
-         <div>
-            <h3 class="text-[16px] font-extrabold mb-1.5">{{ e.title }}</h3>
-            <p class="text-[13.5px] leading-relaxed text-gray-500 dark:text-gray-400">{{ e.desc }}</p>
-         </div>
-      </div>
-   </div>
-</section>
+      </section>
 
       <section class="bg-gray-100 dark:bg-gray-900/40 border-t border-gray-200 dark:border-gray-800">
          <div class="container mx-auto px-4 sm:px-6 lg:px-9 py-10 sm:py-14">
-            <div class="text-center mb-7 sm:mb-8">
+            <div v-reveal class="text-center mb-7 sm:mb-8">
                <p class="uppercase tracking-[0.14em] text-sm font-bold text-primary">Đội ngũ</p>
                <h2 class="mt-3 text-2xl sm:text-3xl font-extrabold tracking-tight">Chuyên gia của chúng tôi</h2>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5.5 max-w-4xl mx-auto">
+            <div v-reveal class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5.5 max-w-4xl mx-auto">
                <UPopover v-for="group in team" :key="group.role" mode="click" :content="{ align: 'center' }">
                   <button type="button"
                      class="w-full bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 sm:p-7 text-center transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:border-primary/40 cursor-pointer">
@@ -100,7 +105,8 @@
                      </div>
                      <h3 class="mt-2 text-base sm:text-lg font-bold">{{ group.role }}</h3>
                      <p class="mt-1 text-sm text-gray-400 dark:text-gray-500 inline-flex items-center gap-1">
-                        Xem danh sách <UIcon name="i-lucide-chevron-down" class="w-4 h-4" />
+                        Xem danh sách
+                        <UIcon name="i-lucide-chevron-down" class="w-4 h-4" />
                      </p>
                   </button>
 
@@ -109,7 +115,8 @@
                         <div class="flex items-center gap-2 mb-3">
                            <span class="w-1 h-5 bg-primary rounded-sm"></span>
                            <p class="text-sm font-bold">{{ group.role }}
-                              <span class="text-gray-400 dark:text-gray-500 font-normal">({{ group.members.length }})</span>
+                              <span class="text-gray-400 dark:text-gray-500 font-normal">({{ group.members.length
+                                 }})</span>
                            </p>
                         </div>
                         <UCarousel v-slot="{ item: page }" :items="chunk(group.members, 3)"
@@ -135,37 +142,43 @@
       </section>
 
       <section class="relative overflow-hidden text-white">
-   <img src="/images/bg-quote.png" alt="" class="absolute inset-0 w-full h-full object-cover object-center" />
-   <div class="absolute inset-0 quote-overlay"></div>
-   <div class="container mx-auto px-4 sm:px-6 lg:px-9 py-14 sm:py-16 lg:py-18 max-w-5xl relative grid grid-cols-1 lg:grid-cols-[1.25fr_1fr] gap-10 sm:gap-12 lg:gap-14 items-center">
-      <div class="relative">
-         <UIcon name="i-lucide-quote" class="w-9 h-9 sm:w-11 sm:h-11 text-white/25 mb-3 sm:mb-4" />
-         <div class="flex items-center gap-3.5 mb-4 sm:mb-5">
-            <span class="w-8.5 h-0.5 bg-white/50"></span>
-            <span class="uppercase tracking-[0.2em] text-xs font-semibold text-white/70">Tôn chỉ hành động</span>
-         </div>
-         <p class="text-2xl sm:text-3xl lg:text-[33px] font-bold leading-snug sm:leading-[1.32] tracking-tight text-balance">
-            Quản lý và thanh lý tài sản một cách
-            hiệu quả nhất,
-            phục vụ tối đa nhu cầu và lợi ích của khách hàng.
-         </p>
-      </div>
-      <div class="bg-white/7 border border-white/15 rounded-2xl p-6 sm:p-7.5">
-         <p class="text-[15px] sm:text-[15.5px] leading-loose text-white/90">
-            Cam kết <strong class="font-semibold text-white">cung cấp các dịch vụ một cách chuyên nghiệp</strong> đã trở thành phương châm, giá trị và niềm tin của VAML — một phần không thể tách rời trong văn hóa Công ty, đòi hỏi chúng tôi không ngừng tự đổi mới và phát triển.
-         </p>
-         <div class="mt-5.5 pt-5 border-t border-white/15 flex items-center gap-3">
-            <div class="h-10 w-10 px-2.5 rounded-lg bg-white flex items-center justify-center shrink-0">
-               <img src="/images/logo.png" alt="Quản Tài Viên VN" class="h-full w-auto object-contain" />
+         <img src="/images/bg-quote.png" alt="" class="absolute inset-0 w-full h-full object-cover object-center" />
+         <div class="absolute inset-0 quote-overlay"></div>
+         <div
+            class="container mx-auto px-4 sm:px-6 lg:px-9 py-14 sm:py-16 lg:py-18 max-w-5xl relative grid grid-cols-1 lg:grid-cols-[1.25fr_1fr] gap-10 sm:gap-12 lg:gap-14 items-center">
+            <div v-reveal.left class="relative">
+               <UIcon name="i-lucide-quote" class="w-9 h-9 sm:w-11 sm:h-11 text-white/25 mb-3 sm:mb-4" />
+               <div class="flex items-center gap-3.5 mb-4 sm:mb-5">
+                  <span class="w-8.5 h-0.5 bg-white/50"></span>
+                  <span class="uppercase tracking-[0.2em] text-xs font-semibold text-white/70">Tôn chỉ hành động</span>
+               </div>
+               <p
+                  class="text-2xl sm:text-3xl lg:text-[33px] font-bold leading-snug sm:leading-[1.32] tracking-tight text-balance">
+                  Quản lý và thanh lý tài sản một cách
+                  hiệu quả nhất,
+                  phục vụ tối đa nhu cầu và lợi ích của khách hàng.
+               </p>
             </div>
-            <div>
-               <div class="font-semibold text-sm">Bùi Phan Anh</div>
-               <div class="text-[12.5px] text-white/60">Giám đốc công ty</div>
+            <div v-reveal.right class="bg-white/7 border border-white/15 rounded-2xl p-6 sm:p-7.5">
+               <p class="text-[15px] sm:text-[15.5px] leading-loose text-white/90">
+                  Cam kết <strong class="font-semibold text-white">cung cấp các dịch vụ một cách chuyên nghiệp</strong>
+                  đã trở
+                  thành phương châm, giá trị và niềm tin của VAML — một phần không thể tách rời trong văn hóa Công ty,
+                  đòi hỏi
+                  chúng tôi không ngừng tự đổi mới và phát triển.
+               </p>
+               <div class="mt-5.5 pt-5 border-t border-white/15 flex items-center gap-3">
+                  <div class="h-10 w-10 px-2.5 rounded-lg bg-white flex items-center justify-center shrink-0">
+                     <img src="/images/logo.png" alt="Quản Tài Viên VN" class="h-full w-auto object-contain" />
+                  </div>
+                  <div>
+                     <div class="font-semibold text-sm">Bùi Phan Anh</div>
+                     <div class="text-[12.5px] text-white/60">Giám đốc công ty</div>
+                  </div>
+               </div>
             </div>
          </div>
-      </div>
-   </div>
-</section>
+      </section>
    </div>
 </template>
 
@@ -211,9 +224,9 @@ const team = [
 ]
 
 const history = [
-   { title: '10/09/2015 · Thành lập', icon: 'i-lucide-building-2', description: 'Công ty Hợp danh Quản lý và Thanh lý tài sản Việt Nam (VAML) được thành lập theo Giấy chứng nhận đăng ký doanh nghiệp số 0106987347 do Sở Kế hoạch và Đầu tư Thành phố Hà Nội cấp.' },
+   { title: '10/09/2015', icon: 'i-lucide-building-2', description: 'Công ty Hợp danh Quản lý và Thanh lý tài sản Việt Nam (VAML) được thành lập theo Giấy chứng nhận đăng ký doanh nghiệp số 0106987347 do Sở Kế hoạch và Đầu tư Thành phố Hà Nội cấp.' },
    { title: '15/08/2016', icon: 'i-lucide-badge-check', description: 'Được Sở Tư pháp thành phố Hà Nội công bố là đơn vị đủ điều kiện quản lý và thanh lý tài sản.' },
-   { title: '24/09/2025 · Thay đổi lần 3', icon: 'i-lucide-rocket', description: 'Đăng ký thay đổi thông tin hoạt động để việc triển khai việc quản lý, thanh lý tài sản theo thủ tục phá sản đạt hiệu quả.' }
+   { title: '24/09/2025', icon: 'i-lucide-rocket', description: 'Đăng ký thay đổi thông tin hoạt động để việc triển khai việc quản lý, thanh lý tài sản theo thủ tục phá sản đạt hiệu quả.' }
 ]
 
 const expertise = [

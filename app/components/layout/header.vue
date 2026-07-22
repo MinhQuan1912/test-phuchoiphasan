@@ -1,9 +1,9 @@
 <template>
-   <div class="container mx-auto px-4 sm:px-6">
+   <div class="container mx-auto px-4 sm:px-6 relative">
       <div class="flex items-center justify-between h-16 lg:h-20">
-         <div class="flex justify-between items-center gap-4 h-10">
+         <div class="flex justify-between items-center gap-4">
             <NuxtLink to="/" class="shrink-0">
-               <img src="/images/logo.png" alt="Logo" class="h-20">
+               <img src="/images/logo.png" alt="Logo" class="h-11 lg:h-14 w-auto">
             </NuxtLink>
             <nav class="hidden lg:flex items-center gap-6">
                <template v-for="item in nav" :key="item.name">
@@ -39,16 +39,13 @@
             </nav>
          </div>
          <div class="flex items-center gap-2 sm:gap-4">
-            <div class="flex items-center">
-               <input ref="searchInput" v-model="searchQuery" type="text" placeholder="Tìm kiếm..." class="h-8 rounded-md border border-gray-300 px-3 text-base outline-none
-                        transition-all duration-300 ease-out focus:border-primary"
-                  :class="showSearch ? 'w-36 sm:w-48 opacity-100 mr-2' : 'w-0 opacity-0 mr-0 px-0'" @keyup.enter="onSearch" />
-               <UTooltip text="Tìm kiếm">
-                  <button class="flex items-center justify-center w-8 h-8 shrink-0" @click="toggleSearch">
-                     <UIcon name="material-symbols:search" class="w-6 h-6" />
-                  </button>
-               </UTooltip>
-            </div>
+            <UTooltip text="Tìm kiếm">
+               <button class="flex items-center justify-center w-8 h-8 shrink-0"
+                  :class="showSearch ? 'text-primary' : ''" @click="toggleSearch">
+                  <UIcon :name="showSearch ? 'material-symbols:close-rounded' : 'material-symbols:search'"
+                     class="w-6 h-6" />
+               </button>
+            </UTooltip>
             <UColorModeButton class="w-8 h-8 shrink-0" />
             <NuxtTime :datetime="Date.now()" weekday="long" locale="vi-VN" year="numeric" month="numeric"
                day="numeric" class="hidden xl:block" />
@@ -58,6 +55,27 @@
             </button>
          </div>
       </div>
+
+      <div v-if="showSearch" class="fixed inset-0 z-30" @click="toggleSearch" />
+
+      <Transition name="search">
+         <div v-if="showSearch"
+            class="absolute left-4 right-4 sm:left-6 sm:right-6 top-full z-40 mt-1.5 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-neutral-900 shadow-xl p-3">
+            <div class="relative">
+               <UIcon name="material-symbols:search"
+                  class="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+               <input ref="searchInput" v-model="searchQuery" type="text"
+                  placeholder="Tìm kiếm bài viết, thông báo..."
+                  class="w-full h-11 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-neutral-900 pl-11 pr-24 text-base outline-none transition-colors focus:border-primary"
+                  @keyup.enter="onSearch" @keyup.esc="toggleSearch" />
+               <button type="button"
+                  class="absolute right-1.5 top-1/2 -translate-y-1/2 h-8 px-4 rounded-md bg-primary text-white text-sm font-semibold hover:opacity-90"
+                  @click="onSearch">
+                  Tìm
+               </button>
+            </div>
+         </div>
+      </Transition>
    </div>
 
    <Teleport to="body">
@@ -187,5 +205,16 @@ function onSearch() {
 .slide-enter-from,
 .slide-leave-to {
    transform: translateX(100%);
+}
+
+.search-enter-active,
+.search-leave-active {
+   transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.search-enter-from,
+.search-leave-to {
+   opacity: 0;
+   transform: translateY(-8px);
 }
 </style>

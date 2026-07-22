@@ -33,7 +33,7 @@
             </button>
          </div>
 
-         <div v-if="filteredFaqs.length" class="space-y-3">
+         <div v-if="filteredFaqs.length" v-reveal class="space-y-3">
             <UAccordion :items="accordionItems" type="multiple" class="space-y-3 text-xl" :ui="{ label: 'text-xl' }">
 
                <template #body="{ item }">
@@ -51,7 +51,8 @@
       </section>
 
       <section class="container mx-auto px-4 sm:px-6 lg:px-9 pt-6 pb-14 max-w-5xl">
-         <div class="bg-primary text-white rounded-2xl px-4 sm:px-6 lg:px-9 py-8 flex flex-wrap items-center justify-between gap-6">
+         <div v-reveal.zoom
+            class="bg-primary text-white rounded-2xl px-4 sm:px-6 lg:px-9 py-8 flex flex-wrap items-center justify-between gap-6">
             <div>
                <h3 class="text-xl font-extrabold mb-1.5">Chưa tìm thấy câu trả lời?</h3>
                <p class="text-white/85 leading-relaxed">
@@ -60,11 +61,11 @@
             </div>
             <div class="flex flex-wrap gap-3">
                <NuxtLink to="/"
-                  class="h-11 inline-flex items-center px-5 rounded-lg bg-white text-primary font-bold">
+                  class="btn-anim h-11 inline-flex items-center px-5 rounded-lg bg-white text-primary font-bold">
                   Liên hệ tư vấn
                </NuxtLink>
                <a href="tel:19006789"
-                  class="h-11 inline-flex items-center px-5 rounded-lg border-[1.5px] border-white/60 text-white font-semibold">
+                  class="btn-anim h-11 inline-flex items-center px-5 rounded-lg border-[1.5px] border-white/60 text-white font-semibold hover:bg-white/10">
                   Gọi 1900 6789
                </a>
             </div>

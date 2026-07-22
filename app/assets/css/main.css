@@ -16,6 +16,11 @@ button {
    cursor: pointer;
 }
 
+/* Phản hồi khi nhấn cho mọi nút */
+button:active {
+   transform: scale(0.96);
+}
+
 a {
    transition: all 0.1s ease;
    cursor: pointer;
@@ -25,5 +30,79 @@ nav a:focus,
 nav a:focus-visible {
   outline: none;
   box-shadow: none;
+}
+
+/* ==========================================================================
+   Nút bấm: vi tương tác nâng nhẹ khi hover + nhấn xuống khi active
+   Dùng cho các CTA dạng <a>/<NuxtLink> (global button:active ở trên lo <button>)
+   ========================================================================== */
+.btn-anim {
+   transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease,
+      border-color 0.25s ease, color 0.25s ease, opacity 0.25s ease;
+   will-change: transform;
+}
+
+.btn-anim:hover {
+   transform: translateY(-2px);
+   box-shadow: 0 12px 22px -12px rgba(8, 16, 30, 0.45);
+}
+
+.btn-anim:active {
+   transform: translateY(0) scale(0.97);
+}
+
+/* ==========================================================================
+   Hiệu ứng xuất hiện khi cuộn (scroll reveal)
+   - Không có JS / SSR: nội dung hiển thị bình thường (an toàn SEO).
+   - Khi JS bật, plugin gắn class `reveal-ready` lên <html>; phần tử mang class
+     `reveal` sẽ ẩn cho tới khi directive v-reveal thêm `is-visible`.
+   - Độ trễ so le đặt qua biến --reveal-delay (vd :style="{ '--reveal-delay': i*70 + 'ms' }").
+   ========================================================================== */
+.reveal {
+   transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+   transition-delay: var(--reveal-delay, 0ms);
+}
+
+html.reveal-ready .reveal:not(.is-visible) {
+   opacity: 0;
+}
+
+html.reveal-ready .reveal-up:not(.is-visible) {
+   transform: translateY(28px);
+}
+
+html.reveal-ready .reveal-down:not(.is-visible) {
+   transform: translateY(-28px);
+}
+
+html.reveal-ready .reveal-left:not(.is-visible) {
+   transform: translateX(-32px);
+}
+
+html.reveal-ready .reveal-right:not(.is-visible) {
+   transform: translateX(32px);
+}
+
+html.reveal-ready .reveal-zoom:not(.is-visible) {
+   transform: scale(0.94);
+}
+
+/* Tôn trọng người dùng tắt hiệu ứng chuyển động */
+@media (prefers-reduced-motion: reduce) {
+   .btn-anim,
+   .reveal {
+      transition: none !important;
+   }
+
+   .btn-anim:hover,
+   .btn-anim:active,
+   button:active {
+      transform: none;
+   }
+
+   html.reveal-ready .reveal:not(.is-visible) {
+      opacity: 1;
+      transform: none;
+   }
 }
 

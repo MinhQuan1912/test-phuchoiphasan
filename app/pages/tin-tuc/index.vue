@@ -25,7 +25,7 @@
             </button>
          </div>
 
-         <NuxtLink v-if="featured" to="/tin-tuc/bai-viet"
+         <NuxtLink v-if="featured" v-reveal to="/tin-tuc/bai-viet"
             class="grid md:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden mb-9">
             <div
                class="aspect-16/10 flex items-center justify-center">
@@ -40,18 +40,18 @@
             </div>
          </NuxtLink>
 
-         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+         <div v-reveal class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <NuxtLink v-for="post in rest" :key="post.title" to="/tin-tuc/bai-viet"
                class="flex flex-col bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden">
                <div
                   class="aspect-video flex items-center justify-center">
                   <img src="https://picsum.photos/300/200" alt="" class="w-full h-full object-cover object-center" />
                </div>
-               <div class="p-[18px] flex flex-col flex-1">
+               <div class="p-4.5 flex flex-col flex-1">
                   <span
                      class="self-start bg-primary/10 text-primary text-[13px] font-semibold px-2.5 py-1 rounded-full">{{
                      post.tag }}</span>
-                  <h3 class="mt-3 mb-2 text-lg font-bold leading-snug">{{ post.title }}</h3>
+                  <h3 class="mt-3 mb-2 text-lg font-extrabold leading-snug tracking-tight">{{ post.title }}</h3>
                   <p class="text-[15px] leading-relaxed text-gray-500 dark:text-gray-400 mb-3">{{ post.excerpt }}</p>
                   <div class="mt-auto text-sm text-gray-500 dark:text-gray-400">{{ post.meta }}</div>
                </div>
@@ -64,7 +64,7 @@
 
          <div v-else class="mt-9 mb-2 text-center">
             <button type="button"
-               class="inline-flex items-center h-11 px-6 rounded-lg border border-gray-200 dark:border-gray-800 text-base font-semibold hover:border-primary hover:text-primary transition-colors">
+               class="btn-anim inline-flex items-center h-11 px-6 rounded-lg border border-gray-200 dark:border-gray-800 text-base font-semibold hover:border-primary hover:text-primary">
                Xem thêm bài viết
             </button>
          </div>

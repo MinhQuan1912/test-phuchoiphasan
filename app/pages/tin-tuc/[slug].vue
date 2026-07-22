@@ -1,6 +1,6 @@
 <template>
    <div class="bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100">
-      <div class="fixed top-0 left-0 h-[3px] bg-primary z-20 transition-[width] duration-100"
+      <div class="fixed top-0 left-0 h-0.75 bg-primary z-20 transition-[width] duration-100"
          :style="{ width: progress + '%' }"></div>
 
       <div class="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-9 pt-11 pb-12">
@@ -100,7 +100,7 @@
                            class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" />
                      </div>
                      <div class="min-w-0 flex-1 p-3.5 flex flex-col justify-center">
-                        <h3 class="text-base font-bold uppercase leading-snug group-hover:text-primary transition-colors">
+                        <h3 class="text-base font-extrabold leading-snug tracking-tight group-hover:text-primary transition-colors">
                            {{ post.title }}</h3>
                         <div class="mt-1.5 text-sm text-gray-500 dark:text-gray-400">{{ post.time }}</div>
                      </div>
