@@ -3,7 +3,7 @@
       <div class="flex items-center justify-between h-16 lg:h-20">
          <div class="flex justify-between items-center gap-4">
             <NuxtLink to="/" class="shrink-0">
-               <img src="/images/logo.png" alt="Logo" class="h-11 lg:h-14 w-auto">
+               <img src="/images/logo.png" alt="Logo" class="h-11 lg:h-16 w-auto lg:w-22 ">
             </NuxtLink>
             <nav class="hidden lg:flex items-center gap-6">
                <template v-for="item in nav" :key="item.name">
@@ -15,21 +15,23 @@
                      {{ item.name }}
                   </NuxtLink>
 
-                  <div v-else class="group relative">
+                  <div v-else class="group relative" @mouseenter="menuOverlay = true; dropdownSuppressed = false"
+                     @mouseleave="menuOverlay = false; dropdownSuppressed = false">
                      <div class="relative h-9 flex items-center justify-between gap-2 hover:cursor-pointer
                            after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-primary font-bold
                            after:transition-[width] after:duration-300 after:ease-out"
                         :class="isDropdownActive(item) ? 'after:w-full text-primary' : 'after:w-0 group-hover:after:w-full'">
                         <p>{{ item.name }}</p>
-                        <UIcon name="weui:arrow-filled"
-                           class="rotate-90 group-hover:-rotate-90 transition-all duration-200 ease-in-out" />
+                        <UIcon name="weui:arrow-filled" class="rotate-90 transition-all duration-200 ease-in-out"
+                           :class="dropdownSuppressed ? '' : 'group-hover:-rotate-90'" />
                      </div>
                      <ul
-                        class="bg-dark absolute top-full -left-3 py-2 opacity-0 invisible transition-all duration-200 ease group-hover:opacity-100 group-hover:visible  bg-white shadow-md rounded-xl w-50">
+                        class="absolute top-full -left-3 z-20 py-2 opacity-0 invisible scale-75 -translate-y-1 origin-top-left transition-all duration-250 ease-out bg-white dark:bg-neutral-900 border border-gray-200 dark:border-gray-800 shadow-md rounded-xl w-50"
+                        :class="dropdownSuppressed ? '' : 'group-hover:opacity-100 group-hover:visible group-hover:scale-100 group-hover:translate-y-0'">
                         <li v-for="sub in item.items" :key="sub.link" class="flex h-10 items-center">
                            <NuxtLink :to="sub.link"
-                              class="px-4 w-full h-full font-bold flex items-center text-base hover:bg-gray-100 hover:cursor-pointer border-l-4 hover:border-primary hover:text-primary"
-                              :class="isActive(sub.link) ? 'border-primary text-primary bg-gray-50' : 'border-transparent text-gray-700'">
+                              class="px-4 w-full h-full font-bold flex items-center text-base hover:bg-gray-100 dark:hover:bg-gray-800 hover:cursor-pointer border-l-4 hover:border-primary hover:text-primary"
+                              :class="isActive(sub.link) ? 'border-primary text-primary bg-gray-50 dark:bg-gray-800/60' : 'border-transparent text-gray-700 dark:text-gray-200'">
                               {{ sub.name }}
                            </NuxtLink>
                         </li>
@@ -38,7 +40,7 @@
                </template>
             </nav>
          </div>
-         <div class="flex items-center gap-2 sm:gap-4">
+         <div class="flex items-center gap-2">
             <UTooltip text="Tìm kiếm">
                <button class="flex items-center justify-center w-8 h-8 shrink-0"
                   :class="showSearch ? 'text-primary' : ''" @click="toggleSearch">
@@ -46,18 +48,20 @@
                      class="w-6 h-6" />
                </button>
             </UTooltip>
-            <UColorModeButton class="w-8 h-8 shrink-0" />
+            <UColorModeButton size="sm" class="w-7 h-7 shrink-0" />
             <NuxtTime :datetime="Date.now()" weekday="long" locale="vi-VN" year="numeric" month="numeric"
-               day="numeric" class="hidden xl:block" />
+               day="numeric" class="hidden xl:block text-sm" />
             <button class="lg:hidden flex items-center justify-center w-9 h-9 shrink-0" aria-label="Mở menu"
                @click="mobileOpen = true">
                <UIcon name="material-symbols:menu-rounded" class="w-7 h-7" />
             </button>
          </div>
       </div>
-
+      <Transition name="fade">
+         <div v-if="menuOverlay"
+            class="fixed inset-x-0 top-20 bottom-0 bg-black/40 pointer-events-none hidden lg:block" />
+      </Transition>
       <div v-if="showSearch" class="fixed inset-0 z-30" @click="toggleSearch" />
-
       <Transition name="search">
          <div v-if="showSearch"
             class="absolute left-4 right-4 sm:left-6 sm:right-6 top-full z-40 mt-1.5 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-neutral-900 shadow-xl p-3">
@@ -132,9 +136,15 @@ const nav = ref([
       ]
    },
    { name: 'Thông báo phá sản', link: '/thong-bao-pha-san' },
-   { name: 'Tin tức', link: '/tin-tuc' },
-   { name: 'Câu hỏi thường gặp', link: '/cau-hoi-thuong-gap' },
-   { name: 'Về chúng tôi', link: '/ve-chung-toi' }
+   { name: 'Tin tức và sự kiện', link: '/tin-tuc' },
+   {
+      name: 'Xem thêm',
+      items: [
+         { name: 'Câu hỏi thường gặp', link: '/cau-hoi-thuong-gap' },
+         { name: 'Về chúng tôi', link: '/ve-chung-toi' },
+         { name: 'Liên hệ', link: '/lien-he' }
+      ]
+   }
 ])
 
 const route = useRoute()
@@ -147,6 +157,9 @@ function isActive(link: string) {
 function isDropdownActive(item: any) {
    return item.items?.some((sub: any) => isActive(sub.link))
 }
+
+const menuOverlay = ref(false)
+const dropdownSuppressed = ref(false)
 
 const showSearch = ref(false)
 const searchQuery = ref('')
@@ -161,6 +174,8 @@ watch(mobileOpen, (open) => {
 
 watch(() => route.path, () => {
    mobileOpen.value = false
+   menuOverlay.value = false
+   dropdownSuppressed.value = true
 })
 
 onBeforeUnmount(() => {

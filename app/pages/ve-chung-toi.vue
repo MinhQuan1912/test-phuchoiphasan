@@ -21,41 +21,101 @@
          </div>
       </section>
 
-      <section class="container mx-auto px-4 sm:px-6 lg:px-9 py-10 sm:py-14">
-         <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
-            <div v-reveal.left
-               class="aspect-4/3 rounded-2xl overflow-hidden flex items-center justify-center md:sticky md:top-24">
-               <img src="/images/ve-chung-toi.png" alt="" class="w-full h-full  object-center" />
-            </div>
-            <div v-reveal.right>
-               <div class="flex items-center gap-2.5 mb-6">
-                  <span class="w-1 h-6 bg-primary rounded-sm"></span>
-                  <h2 class="text-xl sm:text-2xl font-extrabold tracking-tight">Lịch sử hình thành và phát triển</h2>
+      <section class="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
+         <div
+            class="container mx-auto px-4 sm:px-6 lg:px-9 py-12 sm:py-16 max-w-6xl grid grid-cols-1 lg:grid-cols-[0.85fr_1.3fr] gap-10 lg:gap-14 items-start">
+            <div class="lg:sticky lg:top-24">
+               <div v-reveal.left>
+                  <div class="flex items-center gap-2.5 mb-4">
+                     <span class="w-1 h-6 bg-primary rounded-sm"></span>
+                     <p class="uppercase tracking-[0.14em] text-sm font-bold text-primary">Thư ngỏ</p>
+                  </div>
+                  <h2 class="text-2xl sm:text-3xl font-extrabold mb-4">
+                     Kính gửi Quý Khách hàng
+                  </h2>
+                  <p class="text-[15px] leading-6.5 text-gray-500 dark:text-gray-400 mb-6">
+                     Công ty Hợp danh Quản lý và Thanh lý tài sản Việt Nam (VAML) gửi lời chào trân trọng
+                     và hợp tác đến Quý Khách hàng.
+                  </p>
                </div>
-               <ol class="relative">
-                  <li v-for="(h, i) in history" :key="h.title" class="flex gap-4 sm:gap-5">
-                     <div class="flex-none flex flex-col items-center">
-                        <div
-                           class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center ring-4 ring-primary/10">
-                           <UIcon :name="h.icon" class="w-5 h-5 shrink-0" />
-                        </div>
-                        <span v-if="i < history.length - 1"
-                           class="w-0.5 flex-1 bg-gray-200 dark:bg-gray-800 my-1"></span>
+               <ul class="space-y-4">
+                  <li v-for="(f, i) in letterFacts" :key="f.label" v-reveal.left
+                     :style="{ '--reveal-delay': i * 90 + 'ms' }" class="flex items-start gap-3.5">
+                     <div
+                        class="flex-none w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+                        <UIcon :name="f.icon" class="w-5 h-5 shrink-0" />
                      </div>
-                     <div class="pb-8 last:pb-0">
-                        <h3 class="text-[15px] sm:text-lg font-bold leading-10">{{ h.title }}</h3>
-                        <p class="text-sm sm:text-[15px] leading-6 sm:leading-7 text-gray-500 dark:text-gray-400">
-                           {{ h.description }}</p>
+                     <div>
+                        <div class="text-[15px] font-bold leading-6">{{ f.label }}</div>
+                        <div class="text-[13.5px] leading-6 text-gray-500 dark:text-gray-400">{{ f.desc }}</div>
                      </div>
                   </li>
-               </ol>
+               </ul>
+            </div>
+
+            <div
+               class="relative bg-gray-50 dark:bg-gray-950 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 sm:p-9 overflow-hidden">
+               <span class="absolute inset-x-0 top-0 h-1 bg-primary"></span>
+               <UIcon name="i-lucide-mail-open"
+                  class="absolute -top-4 -right-4 w-32 h-32 text-primary/5 dark:text-primary/10 pointer-events-none" />
+               <div class="relative space-y-3">
+                  <p v-for="(p, i) in letter" :key="i" v-reveal :style="{ '--reveal-delay': i * 80 + 'ms' }"
+                     class="text-[15px] sm:text-[15.5px] leading-6.5 sm:leading-7 text-gray-600 dark:text-gray-300">
+                     {{ p }}
+                  </p>
+                  <p v-reveal :style="{ '--reveal-delay': letter.length * 80 + 'ms' }"
+                     class="text-[15px] sm:text-[15.5px] leading-6.5 font-semibold text-gray-900 dark:text-gray-100">
+                     Trân trọng và mong sớm được phục vụ Quý Cơ quan, khách hàng!
+                  </p>
+               </div>
+               <div v-reveal
+                  class="relative mt-6 pt-5 border-t border-gray-200 dark:border-gray-800 flex items-center justify-between gap-4 flex-wrap">
+                  <div class="flex items-center gap-3">
+                     <div
+                        class="h-11 w-11 px-2.5 rounded-lg bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 flex items-center justify-center shrink-0">
+                        <img src="/images/logo.png" alt="Quản Tài Viên VN" class="h-full w-auto object-contain" />
+                     </div>
+                     <div>
+                        <div
+                           class="text-[12.5px] uppercase tracking-[0.12em] font-semibold text-gray-400 dark:text-gray-500">
+                           Chủ tịch HĐTV</div>
+                        <div class="font-bold text-base">Bùi Phan Anh</div>
+                     </div>
+                  </div>
+                  <UIcon name="i-lucide-pen-line" class="w-6 h-6 text-primary/40" />
+               </div>
             </div>
          </div>
       </section>
 
+      <section class="container mx-auto px-4 sm:px-6 lg:px-9 py-10 sm:py-14">
+         <div v-reveal class="text-center mb-8">
+            <p class="uppercase tracking-[0.14em] text-sm font-bold text-primary">Hành trình</p>
+            <h2 class="mt-3 text-2xl sm:text-3xl font-extrabold tracking-tight">Lịch sử hình thành và phát triển</h2>
+         </div>
+         <ol class="grid md:grid-cols-3 gap-8 md:gap-0">
+            <li v-for="(h, i) in history" :key="h.title" v-reveal :style="{ '--reveal-delay': i * 90 + 'ms' }"
+               class="text-center">
+               <!-- Icon ở giữa, đường nối chạy 2 bên sang mốc liền kề -->
+               <div class="flex items-center justify-center">
+                  <span class="hidden md:block h-0.5 flex-1"
+                     :class="i > 0 ? 'bg-gray-200 dark:bg-gray-800' : ''"></span>
+                  <div
+                     class="flex-none w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center ring-4 ring-primary/10">
+                     <UIcon :name="h.icon" class="w-5 h-5 shrink-0" />
+                  </div>
+                  <span class="hidden md:block h-0.5 flex-1"
+                     :class="i < history.length - 1 ? 'bg-gray-200 dark:bg-gray-800' : ''"></span>
+               </div>
+               <h3 class="mt-4 text-[15px] sm:text-lg font-bold">{{ h.title }}</h3>
+               <p class="mt-1.5 text-sm sm:text-[15px] leading-6 sm:leading-7 text-gray-500 dark:text-gray-400 md:px-5">
+                  {{ h.description }}</p>
+            </li>
+         </ol>
+      </section>
+
       <section class="bg-white dark:bg-gray-900 border-y border-gray-200 dark:border-gray-800">
-         <div
-            class="container mx-auto px-4 sm:px-6 lg:px-9 py-9 max-w-5xl grid grid-cols-2 md:grid-cols-4 gap-y-8">
+         <div class="container mx-auto px-4 sm:px-6 lg:px-9 py-9 max-w-5xl grid grid-cols-2 md:grid-cols-4 gap-y-8">
             <div v-for="(s, i) in stats" :key="s.label" v-reveal :style="{ '--reveal-delay': i * 90 + 'ms' }"
                class="text-center px-2 sm:px-4"
                :class="i > 0 ? 'md:border-l border-gray-200 dark:border-gray-800' : ''">
@@ -72,8 +132,7 @@
             <h2 class="mt-3 text-3xl font-extrabold tracking-tight">Lĩnh vực chuyên môn</h2>
          </div>
          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            <div v-for="(e, i) in expertise" :key="e.title" v-reveal
-               :style="{ '--reveal-delay': (i % 3) * 90 + 'ms' }"
+            <div v-for="(e, i) in expertise" :key="e.title" v-reveal :style="{ '--reveal-delay': (i % 3) * 90 + 'ms' }"
                class="h-full bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 flex gap-4">
                <div class="flex-none w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
                   <UIcon :name="e.icon" class="w-5.5 h-5.5 shrink-0" />
@@ -82,6 +141,64 @@
                   <h3 class="text-[16px] font-extrabold mb-1.5">{{ e.title }}</h3>
                   <p class="text-[13.5px] leading-relaxed text-gray-500 dark:text-gray-400">{{ e.desc }}</p>
                </div>
+            </div>
+         </div>
+      </section>
+
+      <section class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
+         <div class="container mx-auto px-4 sm:px-6 lg:px-9 py-12 sm:py-16 max-w-6xl">
+            <div v-reveal class="mb-9 max-w-2xl mx-auto text-center">
+               <p class="uppercase tracking-[0.14em] text-sm font-bold text-primary">Bộ máy tổ chức</p>
+               <h2 class="mt-3 text-2xl sm:text-3xl font-extrabold tracking-tight">Cơ cấu tổ chức</h2>
+               <p class="mt-3 text-[15px] leading-relaxed text-gray-500 dark:text-gray-400">
+                  Di chuột vào từng đơn vị để xem chức năng và nhiệm vụ chi tiết.
+               </p>
+            </div>
+            <div v-reveal class="rounded-2xl overflow-hidden max-w-4xl mx-auto mb-10">
+               <img src="/images/ve-chung-toi.png" alt="Sơ đồ bộ máy tổ chức VAML" class="w-full h-auto" />
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                  <div v-for="(g, i) in orgStructure" :key="g.group" v-reveal
+                     :style="{ '--reveal-delay': (i % 3) * 90 + 'ms' }"
+                     class="bg-gray-50 dark:bg-gray-950 border border-gray-200 dark:border-gray-800 rounded-2xl p-5 sm:p-6 transition-all duration-300 hover:border-primary/40 hover:shadow-md">
+                     <div class="flex items-center gap-3">
+                        <div
+                           class="flex-none w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+                           <UIcon :name="g.icon" class="w-5.5 h-5.5 shrink-0" />
+                        </div>
+                        <h3 class="text-[16px] font-extrabold leading-snug">{{ g.group }}</h3>
+                     </div>
+                     <div class="mt-4 flex flex-col gap-2">
+                        <UPopover v-for="unit in g.units" :key="unit.name" mode="hover"
+                           :content="{ align: 'start' }">
+                           <button type="button"
+                              class="w-full flex items-center justify-between gap-2 px-3.5 py-2.5 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-left text-sm font-semibold transition-colors hover:border-primary hover:text-primary">
+                              {{ unit.name }}
+                              <UIcon name="i-lucide-chevron-right" class="w-4 h-4 shrink-0 text-gray-400" />
+                           </button>
+
+                           <template #content>
+                              <div class="p-4.5 w-80 sm:w-96">
+                                 <div class="flex items-center gap-2 mb-1.5">
+                                    <span class="w-1 h-4.5 bg-primary rounded-sm"></span>
+                                    <p class="text-sm font-bold">{{ unit.name }}</p>
+                                 </div>
+                                 <p class="text-[13.5px] leading-relaxed text-gray-500 dark:text-gray-400 mb-3">
+                                    {{ unit.role }}
+                                 </p>
+                                 <ul class="space-y-1.5">
+                                    <li v-for="duty in unit.duties" :key="duty"
+                                       class="flex items-start gap-2 text-[13.5px] leading-relaxed">
+                                       <UIcon name="i-lucide-check"
+                                          class="w-4 h-4 shrink-0 mt-0.5 text-primary" />
+                                       {{ duty }}
+                                    </li>
+                                 </ul>
+                              </div>
+                           </template>
+                        </UPopover>
+                     </div>
+                  </div>
             </div>
          </div>
       </section>
@@ -116,7 +233,7 @@
                            <span class="w-1 h-5 bg-primary rounded-sm"></span>
                            <p class="text-sm font-bold">{{ group.role }}
                               <span class="text-gray-400 dark:text-gray-500 font-normal">({{ group.members.length
-                                 }})</span>
+                              }})</span>
                            </p>
                         </div>
                         <UCarousel v-slot="{ item: page }" :items="chunk(group.members, 3)"
@@ -188,6 +305,18 @@ useHead({ title: 'Về chúng tôi' })
 const chunk = <T,>(arr: T[], size: number): T[][] =>
    Array.from({ length: Math.ceil(arr.length / size) }, (_, i) => arr.slice(i * size, i * size + size))
 
+const letter = [
+   'VAML là một tổ chức chuyên nghiệp hoạt động trong lĩnh vực dịch vụ tư vấn, quản lý và thanh lý tài sản. VAML được thành lập ngày 10/9/2015, là doanh nghiệp tiên phong hoạt động trong lĩnh vực quản lý và thanh lý tài sản tại Việt Nam ngay khi Luật Phá sản số 51/2014/QH13 được Quốc hội thông qua ngày 19/06/2014, có hiệu lực từ ngày 01/01/2015.',
+   'Công ty vinh dự được nhiều Tòa án, Thẩm phán, Tập đoàn, đơn vị, tổ chức nhà nước tin cậy, tín nhiệm chỉ định tư vấn, quản lý, thanh lý tài sản có tính chất đặc biệt. Nhằm mục đích thực hiện chủ trương xã hội hóa hoạt động quản lý, thanh lý tài sản; với đội ngũ 16 Quản tài viên, 04 Luật sư, 08 Kiểm toán viên, Kế toán viên… có kỹ năng, trình độ trong thực hiện tư vấn, quản lý, thanh lý tài sản; kết hợp với đội ngũ cố vấn có thâm niên và kinh nghiệm hàng đầu Việt Nam trong các lĩnh vực tư pháp, kiểm toán, kế toán, phân tích tài chính. Với hơn 10 năm kinh nghiệm hoạt động trong lĩnh vực tư vấn quản lý, thanh lý tài sản, xử lý nợ xấu, VAML đã và đang giải quyết các vụ việc phá sản doanh nghiệp trên khắp cả nước.',
+   'VAML luôn nỗ lực để trở thành đối tác tin cậy và đồng hành cùng các Tòa án, Thẩm phán, Quý khách hàng trong thực hiện tư vấn phục hồi, quản lý, thanh lý tài sản. Chúng tôi khẳng định vị thế dẫn đầu trong lĩnh vực tư vấn phục hồi, quản lý và thanh lý tài sản; luôn cung cấp dịch vụ cho Tòa án, các cơ quan có thẩm quyền và khách hàng với tinh thần tận tâm, nhanh chóng và hiệu quả.'
+]
+
+const letterFacts = [
+   { icon: 'i-lucide-flag', label: 'Tiên phong từ 10/9/2015', desc: 'Doanh nghiệp đầu tiên hoạt động ngay khi Luật Phá sản 51/2014/QH13 có hiệu lực.' },
+   { icon: 'i-lucide-users', label: '28+ nhân sự chuyên môn', desc: '16 Quản tài viên, 04 Luật sư, 08 Kiểm toán viên – Kế toán viên cùng đội ngũ cố vấn hàng đầu.' },
+   { icon: 'i-lucide-shield-check', label: 'Được Tòa án tín nhiệm', desc: 'Nhiều Tòa án, Thẩm phán, tổ chức nhà nước chỉ định xử lý các vụ việc có tính chất đặc biệt.' }
+]
+
 const stats = [
    { value: '10', label: 'Năm kinh nghiệm' },
    { value: '50+', label: 'Vụ việc đã và đang xử lý' },
@@ -227,6 +356,142 @@ const history = [
    { title: '10/09/2015', icon: 'i-lucide-building-2', description: 'Công ty Hợp danh Quản lý và Thanh lý tài sản Việt Nam (VAML) được thành lập theo Giấy chứng nhận đăng ký doanh nghiệp số 0106987347 do Sở Kế hoạch và Đầu tư Thành phố Hà Nội cấp.' },
    { title: '15/08/2016', icon: 'i-lucide-badge-check', description: 'Được Sở Tư pháp thành phố Hà Nội công bố là đơn vị đủ điều kiện quản lý và thanh lý tài sản.' },
    { title: '24/09/2025', icon: 'i-lucide-rocket', description: 'Đăng ký thay đổi thông tin hoạt động để việc triển khai việc quản lý, thanh lý tài sản theo thủ tục phá sản đạt hiệu quả.' }
+]
+
+const orgStructure = [
+   {
+      group: 'Khối Quản trị',
+      icon: 'i-lucide-landmark',
+      units: [
+         {
+            name: 'Hội đồng thành viên',
+            role: 'Cơ quan quyết định cao nhất của VAML.',
+            duties: [
+               'Quyết định chiến lược phát triển, mô hình tổ chức',
+               'Thông qua kế hoạch tài chính, đầu tư, mở chi nhánh',
+               'Bổ nhiệm, miễn nhiệm Ban Giám đốc',
+               'Thông qua quy chế nội bộ, phân quyền quản lý',
+               'Quyết định các giao dịch lớn, dự án trọng điểm'
+            ]
+         },
+         {
+            name: 'Ban Giám đốc',
+            role: 'Điều hành hoạt động thường xuyên của Công ty theo nghị quyết HĐTV.',
+            duties: [
+               'Tổ chức thực hiện chiến lược kinh doanh',
+               'Quản lý hoạt động các khối và chi nhánh',
+               'Ký kết hợp đồng dịch vụ quản lý, phá sản, tái cơ cấu',
+               'Kiểm soát rủi ro, tuân thủ pháp luật',
+               'Báo cáo Hội đồng thành viên'
+            ]
+         }
+      ]
+   },
+   {
+      group: 'Chi nhánh',
+      icon: 'i-lucide-map-pin',
+      units: [
+         {
+            name: 'Chi nhánh TP. Hồ Chí Minh',
+            role: 'Đại diện Công ty tại khu vực phía Nam; triển khai dịch vụ quản lý tài sản, phá sản, phục hồi doanh nghiệp theo ủy quyền.',
+            duties: [
+               'Phát triển thị trường, đầu mối làm việc với khách hàng',
+               'Thực hiện các vụ việc phá sản, tái cơ cấu theo phân công',
+               'Phối hợp với trụ sở chính',
+               'Quản lý nhân sự, tài sản tại chi nhánh',
+               'Báo cáo định kỳ về hoạt động'
+            ]
+         }
+      ]
+   },
+   {
+      group: 'Khối Vận hành, Hỗ trợ',
+      icon: 'i-lucide-settings',
+      units: [
+         {
+            name: 'Phòng Hành chính – Nhân sự',
+            role: 'Quản trị nguồn nhân lực và hành chính tổng hợp.',
+            duties: [
+               'Tuyển dụng, đào tạo, đánh giá nhân sự',
+               'Quản lý hợp đồng lao động, chế độ tiền lương',
+               'Xây dựng nội quy, quy chế lao động',
+               'Quản lý văn thư, lưu trữ, tài sản; tổ chức hậu cần'
+            ]
+         },
+         {
+            name: 'Phòng Kế toán – Tài chính',
+            role: 'Quản lý tài chính, kế toán và dòng tiền.',
+            duties: [
+               'Hạch toán kế toán; lập báo cáo tài chính, thuế',
+               'Quản lý ngân sách; kiểm soát thanh toán, công nợ',
+               'Theo dõi chi phí từng vụ việc phá sản / tái cơ cấu',
+               'Phối hợp kiểm toán'
+            ]
+         },
+         {
+            name: 'Phòng Pháp chế',
+            role: 'Tham mưu pháp lý và kiểm soát tuân thủ.',
+            duties: [
+               'Thẩm định pháp lý hợp đồng, giao dịch, hồ sơ nghiệp vụ',
+               'Tư vấn pháp luật về phục hồi, phá sản, quản lý & thanh lý tài sản',
+               'Kiểm soát rủi ro pháp lý; hoàn thiện quy chế, quy trình nội bộ',
+               'Đại diện pháp lý theo ủy quyền; cập nhật quy định pháp luật mới'
+            ]
+         }
+      ]
+   },
+   {
+      group: 'Khối Phục hồi doanh nghiệp',
+      icon: 'i-lucide-refresh-cw',
+      units: [
+         {
+            name: 'Phòng Tái cơ cấu doanh nghiệp',
+            role: 'Xây dựng phương án phục hồi, tái cơ cấu doanh nghiệp.',
+            duties: [
+               'Đánh giá hoạt động tài chính của doanh nghiệp',
+               'Xây dựng phương án phục hồi, tái cơ cấu',
+               'Đề xuất tổ chức lại sản xuất – kinh doanh',
+               'Theo dõi, giám sát thực hiện phương án'
+            ]
+         },
+         {
+            name: 'Phòng Quản lý, giám sát hoạt động DN',
+            role: 'Giám sát doanh nghiệp tuân thủ pháp luật và quy chế phối hợp đã ký kết.',
+            duties: [
+               'Theo dõi hoạt động sản xuất – kinh doanh',
+               'Kiểm tra dòng tiền',
+               'Báo cáo cho Tòa án, chủ nợ',
+               'Kiến nghị điều chỉnh phương án; phát hiện rủi ro, vi phạm'
+            ]
+         }
+      ]
+   },
+   {
+      group: 'Khối Nghiệp vụ phá sản',
+      icon: 'i-lucide-gavel',
+      units: [
+         {
+            name: 'Phòng Nghiệp vụ phá sản',
+            role: 'Tổ chức thực hiện thủ tục phá sản theo quy định pháp luật.',
+            duties: [
+               'Tiếp nhận hồ sơ phá sản; phối hợp Tòa án, Quản tài viên',
+               'Lập danh sách chủ nợ; quản lý tài sản doanh nghiệp',
+               'Tổ chức hội nghị chủ nợ',
+               'Báo cáo tiến độ'
+            ]
+         },
+         {
+            name: 'Phòng Xử lý, thanh lý tài sản',
+            role: 'Xử lý, bán tài sản theo Nghị quyết HNCN và đề nghị của Chấp hành viên trong các vụ việc phá sản.',
+            duties: [
+               'Kiểm kê tài sản; phối hợp thẩm định giá',
+               'Lập phương án bán',
+               'Tổ chức đấu giá',
+               'Lập báo cáo quyết toán'
+            ]
+         }
+      ]
+   }
 ]
 
 const expertise = [

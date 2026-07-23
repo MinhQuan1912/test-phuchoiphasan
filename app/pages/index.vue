@@ -39,14 +39,17 @@
                <h2 class="text-xl font-extrabold">Tin nổi bật</h2>
             </div>
 
-            <NuxtLink v-reveal :to="`/tin-tuc/${featured.slug}`" class="block">
-               <div class="aspect-[16/8.2] rounded-2xl flex items-center justify-center">
-                  <img src="https://picsum.photos/300/200" alt="" class="w-full h-full object-cover" />
+            <NuxtLink v-reveal :to="`/tin-tuc/${featured.slug}`" class="group block">
+               <div class="aspect-[16/8.2] rounded-2xl overflow-hidden flex items-center justify-center">
+                  <img src="https://picsum.photos/300/200" alt=""
+                     class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" />
                </div>
                <span
                   class="inline-block mt-4 bg-primary/10 text-primary text-sm font-semibold px-3 py-1 rounded-full">{{
                      featured.tag }}</span>
-               <h3 class="mt-3 mb-2.5 text-[27px] font-extrabold leading-snug tracking-tight">{{ featured.title }}</h3>
+               <h3
+                  class="mt-3 mb-2.5 text-[27px] font-extrabold leading-snug tracking-tight transition-colors group-hover:text-primary font-serif">
+                  {{ featured.title }}</h3>
                <p class="mb-2.5 text-[17px] leading-relaxed text-gray-500 dark:text-gray-400">{{ featured.excerpt }}</p>
                <div class="text-[15px] text-gray-500 dark:text-gray-400">{{ featured.meta }}</div>
             </NuxtLink>
@@ -55,15 +58,18 @@
 
             <NuxtLink v-for="(post, i) in secondary" :key="post.slug" v-reveal
                :style="{ '--reveal-delay': i * 90 + 'ms' }" :to="`/tin-tuc/${post.slug}`"
-               class="flex flex-col sm:flex-row gap-4 sm:gap-4.5 mb-6 last:mb-0">
+               class="group flex flex-col sm:flex-row gap-4 sm:gap-4.5 mb-6 last:mb-0">
                <div class="w-full sm:w-64 lg:w-80 shrink-0 aspect-16/10 rounded-xl overflow-hidden">
-                  <img src="https://picsum.photos/300/200" alt="" class="w-full h-full object-cover" />
+                  <img src="https://picsum.photos/300/200" alt=""
+                     class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" />
                </div>
                <div>
                   <span
                      class="inline-block bg-primary/10 text-primary text-[13px] font-semibold px-2.5 py-1 rounded-full">{{
                         post.tag }}</span>
-                  <h4 class="mt-2 mb-1.5 text-[19px] font-extrabold leading-snug tracking-tight">{{ post.title }}</h4>
+                  <h4
+                     class="mt-2 mb-1.5 text-[19px] font-extrabold leading-snug tracking-tight transition-colors group-hover:text-primary font-serif">
+                     {{ post.title }}</h4>
                   <p class="mb-2.5 text-[17px] leading-relaxed text-gray-500 dark:text-gray-400">{{ post.excerpt }}
                   </p>
                   <div class="text-sm text-gray-500 dark:text-gray-400">{{ post.time }}</div>
@@ -80,7 +86,7 @@
                class="flex gap-3 py-3.5 group" :class="i > 0 ? 'border-t border-gray-200 dark:border-gray-800' : ''">
                <span class="font-extrabold text-[17px] text-primary min-w-5">{{ String(i + 1).padStart(2, '0') }}</span>
                <div>
-                  <h4 class="text-base font-extrabold leading-snug tracking-tight group-hover:text-primary transition-colors">{{
+                  <h4 class="text-base font-extrabold leading-snug tracking-tight group-hover:text-primary transition-colors font-serif">{{
                      item.title }}</h4>
                   <div class="text-sm text-gray-500 dark:text-gray-400 mt-1">{{ item.meta }}</div>
                </div>
@@ -170,24 +176,6 @@
          </div>
       </section>
 
-      <section class="container mx-auto px-4 sm:px-6 lg:px-9 pb-12">
-         <div v-reveal.zoom
-            class="bg-primary text-white rounded-2xl p-6 sm:p-9 flex flex-wrap items-center justify-between gap-6">
-            <div>
-               <h3 class="text-2xl font-extrabold mb-1.5">Cần hỗ trợ về thủ tục phá sản?</h3>
-               <p class="text-white/85 leading-relaxed">Liên hệ để được đội ngũ chuyên gia tư vấn miễn phí.</p>
-            </div>
-            <div class="flex flex-wrap gap-3">
-               <NuxtLink to="/"
-                  class="btn-anim h-11 inline-flex items-center px-5 rounded-lg bg-white text-primary font-bold">
-                  Liên hệ tư vấn
-               </NuxtLink>
-               <a href="tel:19006789"
-                  class="btn-anim h-11 inline-flex items-center px-5 rounded-lg border-[1.5px] border-white/60 text-white font-semibold hover:bg-white/10">Gọi
-                  1900 6789</a>
-            </div>
-         </div>
-      </section>
    </div>
 </template>
 

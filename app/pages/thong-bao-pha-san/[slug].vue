@@ -14,7 +14,7 @@
                   <span class="opacity-60 mx-1">/</span>
                   <span>{{ data.type }}</span>
                </nav>
-               <h1 class="mt-4 mb-5 text-3xl sm:text-4xl/tight font-extrabold tracking-tight">{{ data.title }}</h1>
+               <h1 class="mt-4 mb-5 text-3xl sm:text-4xl/tight font-extrabold tracking-tight font-serif">{{ data.title }}</h1>
 
                <div class="flex items-center gap-3.5 pb-6 border-b border-gray-200 dark:border-gray-800">
                   <div class="w-11 h-11 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
@@ -35,7 +35,8 @@
                </p>
                <p class="mb-5 text-[18.5px] leading-8 text-gray-500 dark:text-gray-400">
                   Thông báo được ban hành ngày {{ data.date }}. Doanh nghiệp {{ data.title }} có trụ sở tại
-                  {{ data.address }}.
+                  {{ data.address }}. Vụ việc do <strong class="text-gray-900 dark:text-gray-100">{{ data.court
+                  }}</strong> thụ lý, giải quyết.
                </p>
                <p class="mb-5 text-[18.5px] leading-8 text-gray-500 dark:text-gray-400">
                   Quản tài viên phụ trách vụ việc: <strong class="text-gray-900 dark:text-gray-100">{{ data.manager
@@ -76,7 +77,7 @@
                            class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" />
                      </div>
                      <div class="min-w-0 flex-1 p-3.5 flex flex-col justify-center">
-                        <h3 class="text-base font-extrabold leading-snug tracking-tight group-hover:text-primary transition-colors">
+                        <h3 class="text-base font-extrabold leading-snug tracking-tight group-hover:text-primary transition-colors font-serif">
                            {{ a.title }}</h3>
                         <div class="mt-1.5 text-sm text-gray-500 dark:text-gray-400">{{ a.type }} · {{ a.date }}</div>
                      </div>
@@ -91,7 +92,6 @@
 <script setup lang="ts">
 import { announcements, getAnnouncementBySlug, announcementSummary } from '~/utils/announcements'
 
-// Mỗi slug là một instance riêng để setup chạy lại khi điều hướng client-side.
 definePageMeta({ key: (route) => route.path })
 
 const route = useRoute()
@@ -102,7 +102,6 @@ if (!announcement.value) {
    throw createError({ statusCode: 404, statusMessage: 'Không tìm thấy thông báo', fatal: true })
 }
 
-// Đã kiểm tra ở trên nên chắc chắn tồn tại tại thời điểm render.
 const data = announcement.value!
 
 const summary = announcementSummary(data)
@@ -113,7 +112,6 @@ const guidance = data.type === 'Tuyên bố phá sản'
 
 const tags = [data.type]
 
-// Ưu tiên các thông báo cùng loại, lấy tối đa 3 mục.
 const related = [...announcements]
    .filter((a) => a.slug !== data.slug)
    .sort((a, b) => Number(b.type === data.type) - Number(a.type === data.type))
