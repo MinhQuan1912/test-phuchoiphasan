@@ -2,10 +2,16 @@
 const PHONE = '0966643359'
 const PHONE_DISPLAY = '0966 643 359'
 const ZALO = `https://zalo.me/${PHONE}`
+
+// Ban đầu 2 nút nằm đúng vị trí nút cuộn-lên; khi nút cuộn-lên xuất hiện (cuộn > 400)
+// thì 2 nút này trượt lên để nhường chỗ.
+const { y } = useWindowScroll()
+const scrolled = computed(() => y.value > 400)
 </script>
 
 <template>
-   <div class="fixed z-5 hidden md:flex flex-col gap-3.5 right-10 bottom-24">
+   <div class="fixed z-5 hidden md:flex flex-col gap-3.5 right-10 transition-all duration-500"
+      :class="scrolled ? 'bottom-24' : 'bottom-8'">
 
       <a :href="ZALO" target="_blank" rel="noopener noreferrer" aria-label="Chat Zalo"
          class="group relative flex w-12 h-12 justify-center items-center rounded-full bg-[#0068ff] text-white shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl">
