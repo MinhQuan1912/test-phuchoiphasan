@@ -16,7 +16,7 @@ const scrolled = computed(() => y.value > 400)
       <a :href="ZALO" target="_blank" rel="noopener noreferrer" aria-label="Chat Zalo"
          class="group relative flex w-12 h-12 justify-center items-center rounded-full bg-[#0068ff] text-white shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl">
          <span class="absolute inset-0 rounded-full bg-[#0068ff] opacity-70 animate-ping motion-reduce:hidden"></span>
-         <UIcon name="i-lucide-message-circle" class="relative w-5.5 h-5.5" />
+         <UIcon name="i-simple-icons-zalo" class="relative w-7 h-7" />
       </a>
 
       <a :href="`tel:${PHONE}`" :aria-label="`Gọi điện: ${PHONE_DISPLAY}`"
