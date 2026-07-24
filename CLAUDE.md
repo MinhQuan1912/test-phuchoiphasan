@@ -35,7 +35,7 @@ app/
     header.vue               # Nav desktop + dropdown Dịch vụ, menu mobile (Teleport), tìm kiếm, dark mode
     footer.vue               # Liên hệ, danh mục, dịch vụ, bản đồ
   pages/
-    index.vue                # Trang chủ: hero, tin nổi bật, dịch vụ, bảng "Thông báo phá sản mới nhất"
+    index.vue                # Trang chủ: hero, tin nổi bật + sidebar (Mới cập nhật · Thông báo mới nhất), dịch vụ, timeline "Quy trình phá sản" (11 bước)
     tin-tuc/                 # index (list dạng card) · [slug] (chi tiết)
     thong-bao-pha-san/       # index (list card + lọc theo loại) · [slug] (chi tiết)
     dich-vu/                 # pha-san · phuc-hoi · tu-van · quan-ly-tai-san
@@ -56,7 +56,7 @@ Giống toàn hệ thống: Tin tức và Thông báo là hai "loại" nội dun
 
 - **Thông báo phá sản** phân theo **2 loại**: `Mở thủ tục` và `Tuyên bố phá sản` (hằng `ANNOUNCEMENT_TYPES` trong `utils/announcements.ts`), lọc bằng nút — **không** lọc theo Tòa án.
 - Dữ liệu Thông báo tập trung ở `app/utils/announcements.ts` (mảng `announcements` + `getAnnouncementBySlug` + `announcementSummary`). Trang chủ, trang danh sách và trang chi tiết **import chung** file này để không lệch dữ liệu — import tường minh: `import { announcements } from '~/utils/announcements'`.
-- Trình bày phân biệt theo ngữ cảnh: trang danh sách `/thong-bao-pha-san` dùng **card giống trang tin tức**; mục ở trang chủ dùng **bảng tóm tắt gọn** (đừng nhân bản layout tin tức xuống trang chủ).
+- Trình bày phân biệt theo ngữ cảnh: trang danh sách `/thong-bao-pha-san` dùng **card giống trang tin tức**; trang chủ chỉ hiện **danh sách gọn 5 mục trong sidebar** (ảnh + tiêu đề + `loại · ngày` dạng chữ thường, không badge, không nút "Xem tất cả").
 
 ## Quy Ước Giao Diện / Tailwind
 

@@ -5,19 +5,19 @@
             <img src="https://picsum.photos/300/200" alt="" class="w-full h-full object-cover object-center" />
          </div>
          <div class="absolute inset-0 hero-overlay"></div>
-         <div class="relative container mx-auto px-4 sm:px-6 lg:px-9 pt-12 pb-10 sm:pt-17.5 sm:pb-15">
+         <div class="relative container mx-auto px-4 sm:px-6 lg:px-9 pt-10 pb-8 sm:pt-14 sm:pb-12">
             <div class="max-w-180">
-               <p class="uppercase tracking-[0.16em] text-sm font-bold text-white/80">Cổng thông tin quản lý &amp;
+               <p class="uppercase tracking-[0.16em] text-xs font-bold text-white/80">Cổng thông tin quản lý &amp;
                   thanh lý tài sản</p>
-               <h1 class="my-4 text-3xl sm:text-4xl lg:text-[46px]/tight font-extrabold tracking-tight text-white">
+               <h1 class="my-3 text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white">
                   Thông tin phá sản minh bạch, cập nhật theo từng quyết định của tòa án
                   <nav></nav>
                </h1>
-               <p class="mb-7 text-xl leading-relaxed text-white/85 max-w-xl">
+               <p class="mb-6 text-base sm:text-lg leading-relaxed text-white/85 max-w-xl">
                   Tra cứu thông báo phá sản, theo dõi tin tức pháp lý và nhận tư vấn chuyên sâu về quản lý, thanh lý tài
                   sản doanh nghiệp trên toàn quốc.
                </p>
-               <div class="flex flex-wrap gap-3.5 mb-8">
+               <div class="flex flex-wrap gap-3.5 mb-2">
                   <NuxtLink to="/thong-bao-pha-san"
                      class="btn-anim h-12 inline-flex items-center px-6 rounded-lg bg-white text-primary font-bold">
                      Tra cứu thông báo
@@ -77,28 +77,63 @@
             </NuxtLink>
          </div>
 
-         <aside v-reveal.right>
-            <div class="flex items-center gap-2.5 mb-1.5">
-               <span class="w-1 h-5 bg-primary rounded-sm"></span>
-               <h3 class="text-[19px] font-extrabold">Mới cập nhật</h3>
-            </div>
-            <NuxtLink v-for="(item, i) in latest" :key="item.slug" :to="`/tin-tuc/${item.slug}`"
-               class="flex gap-3 py-3.5 group" :class="i > 0 ? 'border-t border-gray-200 dark:border-gray-800' : ''">
-               <span class="font-extrabold text-[17px] text-primary min-w-5">{{ String(i + 1).padStart(2, '0') }}</span>
-               <div>
-                  <h4 class="text-base font-extrabold leading-snug tracking-tight group-hover:text-primary transition-colors font-serif">{{
-                     item.title }}</h4>
-                  <div class="text-sm text-gray-500 dark:text-gray-400 mt-1">{{ item.meta }}</div>
+         <aside v-reveal.right class="flex flex-col gap-8">
+            <div>
+               <div class="flex items-center gap-2.5 mb-1.5">
+                  <span class="w-1 h-5 bg-primary rounded-sm"></span>
+                  <h3 class="text-[19px] font-extrabold">Mới cập nhật</h3>
                </div>
-            </NuxtLink>
+               <NuxtLink v-for="(item, i) in latest" :key="item.slug" :to="`/tin-tuc/${item.slug}`"
+                  class="flex gap-3.5 py-3.5 group"
+                  :class="i > 0 ? 'border-t border-gray-200 dark:border-gray-800' : ''">
+                  <div class="w-24 shrink-0 aspect-16/10 rounded-lg overflow-hidden">
+                     <img src="https://picsum.photos/300/200" alt=""
+                        class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" />
+                  </div>
+                  <div class="min-w-0">
+                     <h4
+                        class="text-[15px] font-extrabold leading-snug tracking-tight group-hover:text-primary transition-colors font-serif line-clamp-2">
+                        {{ item.title }}</h4>
+                     <div class="text-sm text-gray-500 dark:text-gray-400 mt-1">{{ item.meta }}</div>
+                  </div>
+               </NuxtLink>
+            </div>
+
+            <div>
+               <div class="flex items-center gap-2.5 mb-1.5">
+                  <span class="w-1 h-5 bg-primary rounded-sm"></span>
+                  <h3 class="text-[19px] font-extrabold">Thông báo mới nhất</h3>
+               </div>
+               <NuxtLink v-for="(a, i) in latestAnnouncements" :key="a.slug"
+                  :to="`/thong-bao-pha-san/${a.slug}`" class="flex gap-3.5 py-3.5 group"
+                  :class="i > 0 ? 'border-t border-gray-200 dark:border-gray-800' : ''">
+                  <div class="w-24 shrink-0 aspect-16/10 rounded-lg overflow-hidden">
+                     <img src="https://picsum.photos/300/200" alt=""
+                        class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" />
+                  </div>
+                  <div class="min-w-0">
+                     <h4
+                        class="text-[15px] font-semibold leading-snug group-hover:text-primary transition-colors line-clamp-2">
+                        {{ a.title }}</h4>
+                     <div class="text-sm text-gray-500 dark:text-gray-400 mt-1">{{ a.type }} · {{ a.date }}</div>
+                  </div>
+               </NuxtLink>
+            </div>
          </aside>
       </section>
 
       <section class="bg-gray-100 dark:bg-gray-900/40 border-t border-gray-200 dark:border-gray-800 mt-8">
          <div class="container mx-auto px-4 sm:px-6 lg:px-9 py-12">
-            <div v-reveal class="text-center mb-8">
-               <p class="uppercase tracking-[0.14em] text-sm font-bold text-primary">Chúng tôi làm gì</p>
-               <h2 class="mt-3 text-3xl font-extrabold tracking-tight">Dịch vụ của chúng tôi</h2>
+            <div v-reveal class="max-w-2xl mx-auto text-center mb-10 sm:mb-12">
+               <p
+                  class="inline-flex items-center gap-2 text-xs sm:text-[13px] font-bold uppercase tracking-[0.2em] text-primary">
+                  <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+                  Lĩnh vực hoạt động
+               </p>
+               <h2
+                  class="mt-3.5 text-3xl sm:text-4xl lg:text-[42px]/[1.1] font-extrabold tracking-tight text-gray-900 dark:text-white">
+                  Dịch vụ của chúng tôi
+               </h2>
             </div>
             <div v-reveal class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5.5">
                <NuxtLink v-for="svc in services" :key="svc.title" :to="svc.link" class="group flex flex-col justify-between bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6
@@ -125,62 +160,13 @@
          </div>
       </section>
 
-      <section class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
-         <div class="container mx-auto px-4 sm:px-6 lg:px-9 py-12">
-            <div v-reveal class="flex flex-wrap items-end justify-between gap-4 mb-4.5">
-               <div class="flex items-center gap-2.5">
-                  <span class="w-1 h-6 bg-primary rounded-sm"></span>
-                  <h2 class="text-2xl font-extrabold tracking-tight">Thông báo phá sản mới nhất</h2>
-               </div>
-               <NuxtLink to="/thong-bao-pha-san"
-                  class="group text-[15px] font-semibold text-primary inline-flex items-center gap-1 transition-all duration-300 hover:gap-2">
-                  Xem tất cả
-                  <span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
-               </NuxtLink>
-            </div>
-
-            <div class="flex flex-wrap gap-2.5 mb-3.5">
-               <button v-for="type in typeFilters" :key="type" type="button"
-                  class="h-9 px-4 inline-flex items-center rounded-full text-[15px] font-semibold border transition-all"
-                  :class="type === activeType
-                     ? 'bg-primary text-white border-primary'
-                     : 'bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-800 hover:border-primary'"
-                  @click="activeType = type">
-                  {{ type }}
-               </button>
-            </div>
-
-            <div v-reveal class="border border-gray-200 dark:border-gray-800 rounded-2xl overflow-x-auto">
-               <div class="min-w-140">
-                  <div
-                     class="grid grid-cols-[1fr_170px_110px] gap-4 items-center px-4.5 py-3.5 bg-gray-100 dark:bg-gray-800/40 uppercase tracking-wide text-[13px] font-bold text-gray-500 dark:text-gray-400">
-                     <div>Nội dung thông báo</div>
-                     <div>Loại</div>
-                     <div>Ngày</div>
-                  </div>
-                  <NuxtLink v-for="(a, i) in announcementsPreview" :key="a.slug"
-                     :to="`/thong-bao-pha-san/${a.slug}`"
-                     class="group grid grid-cols-[1fr_170px_110px] gap-4 items-center px-4.5 py-3.75 hover:bg-gray-50 dark:hover:bg-gray-800/40 transition-colors"
-                     :class="i > 0 ? 'border-t border-gray-200 dark:border-gray-800' : ''">
-                     <div class="text-base font-semibold leading-snug group-hover:text-primary transition-colors">{{
-                        a.title }}</div>
-                     <div>
-                        <span
-                           class="inline-block bg-primary/10 text-primary text-[13px] font-semibold px-2.5 py-1 rounded-full">{{
-                              a.type }}</span>
-                     </div>
-                     <div class="text-[15px] text-gray-500 dark:text-gray-400">{{ a.date }}</div>
-                  </NuxtLink>
-               </div>
-            </div>
-         </div>
-      </section>
+      <BankruptcyProcess />
 
    </div>``
 </template>
 
 <script setup lang="ts">
-import { announcements, ANNOUNCEMENT_TYPES } from '~/utils/announcements'
+import { announcements } from '~/utils/announcements'
 
 useHead({ title: 'Trang chủ' })
 
@@ -205,6 +191,8 @@ const latest = [
    { slug: 'dinh-gia-tai-san', title: 'Nguyên tắc định giá tài sản trong thủ tục phá sản', meta: 'Phân tích · 2 ngày trước' }
 ]
 
+const latestAnnouncements = announcements.slice(0, 5)
+
 const services = [
    { n: '01', title: 'Phá sản', desc: 'Hỗ trợ nộp đơn, mở thủ tục và đại diện trong suốt quá trình giải quyết phá sản.', link: '/dich-vu/pha-san' },
    { n: '02', title: 'Phục hồi', desc: 'Xây dựng và triển khai phương án phục hồi hoạt động kinh doanh khả thi.', link: '/dich-vu/phuc-hoi' },
@@ -212,16 +200,6 @@ const services = [
    { n: '04', title: 'Quản lý tài sản', desc: 'Kiểm kê, định giá, bảo quản và thanh lý tài sản minh bạch, đúng quy định.', link: '/dich-vu/quan-ly-tai-san' }
 ]
 
-const activeType = ref('Tất cả')
-
-const typeFilters = ['Tất cả', ...ANNOUNCEMENT_TYPES]
-
-const announcementsPreview = computed(() =>
-   (activeType.value === 'Tất cả'
-      ? announcements
-      : announcements.filter((a) => a.type === activeType.value)
-   ).slice(0, 5)
-)
 
 </script>
 

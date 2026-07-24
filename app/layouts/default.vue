@@ -14,6 +14,7 @@
             <UIcon name="maki:arrow" class="-rotate-90 cursor-pointer" />
          </button>
       </div>
+      <LayoutContactFab />
       <LayoutFooter />
    </div>
 </template>

@@ -5,13 +5,13 @@
             <img src="https://picsum.photos/300/200" alt="" class="w-full h-full object-cover object-center" />
          </div>
          <div class="absolute inset-0 hero-overlay"></div>
-         <div class="relative container mx-auto px-4 sm:px-6 lg:px-9 py-16 sm:py-24 lg:py-28 max-w-3xl text-center">
-            <p class="uppercase tracking-[0.14em] text-sm font-bold text-white/85">Về chúng tôi</p>
+         <div class="relative container mx-auto px-4 sm:px-6 lg:px-9 py-7 sm:py-9 lg:py-11 max-w-3xl text-center">
+            <p class="uppercase tracking-[0.14em] text-xs font-bold text-white/85">Về chúng tôi</p>
             <h1
-               class="mt-3 mb-3.5 text-[26px] sm:text-4xl lg:text-[42px]/tight font-extrabold tracking-tight text-white">
+               class="mt-2 mb-2.5 text-xl sm:text-2xl lg:text-3xl/tight font-extrabold tracking-tight text-white">
                Chuyên gia đồng hành cùng doanh nghiệp trong giai đoạn khó khăn
             </h1>
-            <p class="text-white/82 text-[17px] sm:text-[19px] leading-relaxed max-w-2xl mx-auto">
+            <p class="text-white/82 text-sm sm:text-[15px] leading-relaxed max-w-2xl mx-auto">
                Công ty Hợp danh Quản lý và thanh lý tài sản Việt Nam là một đơn vị hoạt động chuyên nghiệp trong lĩnh
                vực Dịch vụ tư vấn,
                tổ chức quản lý và thanh lý tài sản, quyền tài sản, quyền sử dụng đất, vật tư, thiết bị hàng hóa và các
@@ -96,7 +96,6 @@
          <ol class="grid md:grid-cols-3 gap-8 md:gap-0">
             <li v-for="(h, i) in history" :key="h.title" v-reveal :style="{ '--reveal-delay': i * 90 + 'ms' }"
                class="text-center">
-               <!-- Icon ở giữa, đường nối chạy 2 bên sang mốc liền kề -->
                <div class="flex items-center justify-center">
                   <span class="hidden md:block h-0.5 flex-1"
                      :class="i > 0 ? 'bg-gray-200 dark:bg-gray-800' : ''"></span>
@@ -150,17 +149,14 @@
             <div v-reveal class="mb-9 max-w-2xl mx-auto text-center">
                <p class="uppercase tracking-[0.14em] text-sm font-bold text-primary">Bộ máy tổ chức</p>
                <h2 class="mt-3 text-2xl sm:text-3xl font-extrabold tracking-tight">Cơ cấu tổ chức</h2>
-               <p class="mt-3 text-[15px] leading-relaxed text-gray-500 dark:text-gray-400">
-                  Di chuột vào từng đơn vị để xem chức năng và nhiệm vụ chi tiết.
-               </p>
             </div>
             <div v-reveal class="rounded-2xl overflow-hidden max-w-4xl mx-auto mb-10">
                <img src="/images/ve-chung-toi.png" alt="Sơ đồ bộ máy tổ chức VAML" class="w-full h-auto" />
             </div>
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div class="flex flex-wrap justify-center gap-5">
                   <div v-for="(g, i) in orgStructure" :key="g.group" v-reveal
                      :style="{ '--reveal-delay': (i % 3) * 90 + 'ms' }"
-                     class="bg-gray-50 dark:bg-gray-950 border border-gray-200 dark:border-gray-800 rounded-2xl p-5 sm:p-6 transition-all duration-300 hover:border-primary/40 hover:shadow-md">
+                     class="w-full sm:w-[calc((100%-1.25rem)/2)] lg:w-[calc((100%-2.5rem)/3)] bg-gray-50 dark:bg-gray-950 border border-gray-200 dark:border-gray-800 rounded-2xl p-5 sm:p-6 transition-all duration-300 hover:border-primary/40 hover:shadow-md">
                      <div class="flex items-center gap-3">
                         <div
                            class="flex-none w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center">

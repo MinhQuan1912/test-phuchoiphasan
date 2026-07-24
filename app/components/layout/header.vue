@@ -173,7 +173,7 @@ watch(mobileOpen, (open) => {
 })
 
 watch(() => route.path, () => {
-   mobileOpen.value = false
+   mobileOpen.value = false                                                                                                   
    menuOverlay.value = false
    dropdownSuppressed.value = true
 })
