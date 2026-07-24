@@ -4,12 +4,12 @@
 @import "../theme/color.css";
 
 @theme {
-  --font-sans: "Be Vietnam Pro", Arial, Helvetica, sans-serif;
+  --font-sans: "Inter", Arial, Helvetica, sans-serif;
   --font-serif: "Merriweather", Georgia, serif;
 }
 
 body {
-  font-family: "Be Vietnam Pro", Arial, Helvetica, sans-serif;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
 }
 
 button {

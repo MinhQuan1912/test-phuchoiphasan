@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   fonts: {
     families: [
       // Khai báo đủ các weight đang dùng (medium→extrabold) để tránh browser tự giả lập độ đậm
-      { name: "Be Vietnam Pro", provider: "google", weights: [400, 500, 600, 700, 800] },
+      { name: "Inter", provider: "google", weights: [400, 500, 600, 700, 800] },
       { name: "Merriweather", provider: "google", weights: [400, 700, 800] },
     ],
   },
